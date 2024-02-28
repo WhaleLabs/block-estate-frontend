@@ -26,6 +26,7 @@ export default function Home() {
                                 />
                     })}
                 </div>
+                <div className='h-[500px] w-full'></div>
             </div>
         </div>
     )
