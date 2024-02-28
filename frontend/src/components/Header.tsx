@@ -1,10 +1,15 @@
-import { useNavigate } from "react-router-dom";
+import { Layout, Menu } from 'antd';
+import { HomeOutlined, MenuOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
+const { Header } = Layout;
 
 export function AppHeader({isHidden} : {isHidden: boolean}) {
 
     const navigator = useNavigate();
 
     const translateClass = isHidden ? '-translate-y-full' : 'translate-y-0';
+
+    const navigator = useNavigate();
 
     return (
         <header className={`transform ${translateClass} transition-transform duration-600 sticky top-0 z-20 bg-white shadow-lg`}>
@@ -40,6 +45,13 @@ export function AppHeader({isHidden} : {isHidden: boolean}) {
                 </button>
 
                 <button 
+                    className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow focus:outline-none hover:bg-blue-600"
+                    onClick={() => navigator('/holdings')}
+                >
+                    My Holdings
+                </button>
+                  
+                 <button 
                     className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow focus:outline-none hover:bg-blue-600"
                     onClick={() => navigator('/profile')}
                 >
