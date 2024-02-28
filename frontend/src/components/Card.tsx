@@ -2,11 +2,13 @@
 export function Card({image, title, location, price} : {image: string, title: string, location: string, price: number}) {
 
     return (
-        <div className="aspect-[4/5] bg-red-600 rounded-xl overflow-hidden">
+        <div className="aspect-[3/4] bg-transparent rounded-xl overflow-hidden cursor-pointer">
             <img src={image} alt="" className="aspect-square rounded-xl object-cover w-full" />
-            <div></div>
-            <h1></h1>
-            {title}
+            <div className="py-2">
+                <h2 className="font-semibold text-primary-text">{title}</h2>
+                <p className="text-sm text-secondary-text">{location}</p>
+                <p className="text-sm text-secondary-text">${price}/night</p>
+            </div>
         </div>
     );
 };
