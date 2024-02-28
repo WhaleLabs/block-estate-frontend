@@ -1,11 +1,6 @@
-import { Layout, Menu } from 'antd';
-import { HomeOutlined, MenuOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
-const { Header } = Layout;
 
 export function AppHeader({isHidden} : {isHidden: boolean}) {
-
-    const navigator = useNavigate();
 
     const translateClass = isHidden ? '-translate-y-full' : 'translate-y-0';
 
