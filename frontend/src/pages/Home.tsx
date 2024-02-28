@@ -1,4 +1,6 @@
 // import { useNavigate } from "react-router-dom";
+import { Card } from '../components/Card';
+import { cardData } from '../utils/mock';
 
 export default function Home() {
 
@@ -6,8 +8,12 @@ export default function Home() {
 
     return (
         <div className='w-[100vw] h-[100vh] overflow-y-auto'>
-            <div className="p-12">  
-                HOME
+            <div className="p-12 w-full">  
+                <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4'>
+                    {cardData.map((card, index) => {
+                        return <Card key={index} title={card.title} image={card.image} location={card.location} price={card.price} />
+                    })}
+                </div>
             </div>
         </div>
     )
