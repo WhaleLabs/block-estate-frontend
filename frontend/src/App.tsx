@@ -3,6 +3,7 @@ import Layout from './pages/Layout'
 import Home from './pages/Home'
 import Profile from './pages/Profile'
 import Trips from "./pages/Trips"
+import Property from "./pages/Property"
 
 function App() {
 
@@ -16,6 +17,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/trips" element={<Trips />} />
+            <Route path="/property/:id" element={
+              <Property
+              />}
+            />
           </Route>
         </Routes>
       </BrowserRouter>

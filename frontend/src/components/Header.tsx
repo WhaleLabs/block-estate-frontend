@@ -3,45 +3,76 @@ import { HomeOutlined, MenuOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 const { Header } = Layout;
 
-export function AppHeader() {
+export function AppHeader({isHidden} : {isHidden: boolean}) {
+
+    const navigator = useNavigate();
+
+    const translateClass = isHidden ? '-translate-y-full' : 'translate-y-0';
 
     const navigator = useNavigate();
 
     return (
-        <Layout className="layout">
-            <Header className="bg-white flex items-center justify-between px-4 shadow-md">
-                <div className="logo">
-                    {/* Your Logo Here */}
+        <header className={`transform ${translateClass} transition-transform duration-600 sticky top-0 z-20 bg-white shadow-lg`}>
+            <div className="max-w-screen-xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+                <div className="flex justify-center items-center space-x-4">
+                {/* Search Input */}
+                {/* <div className="relative w-full max-w-xs"> 
+                    <input
+                    type="text"
+                    className="pl-10 pr-4 py-2 w-full rounded-lg shadow focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                    placeholder="Search..."
+                    />
+                    <div className="absolute top-0 left-0 inline-flex items-center p-2">
+                    <svg className="h-6 w-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    </div>
+                </div> */}
+
+                {/* Navigation Menu Basic */}
+                <button 
+                    className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow focus:outline-none hover:bg-blue-600"
+                    onClick={() => navigator('/')}
+                >
+                    Home
+                </button>
+
+                <button 
+                    className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow focus:outline-none hover:bg-blue-600"
+                    onClick={() => navigator('/trips')}
+                >
+                    Trips
+                </button>
+
+                <button 
+                    className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow focus:outline-none hover:bg-blue-600"
+                    onClick={() => navigator('/holdings')}
+                >
+                    My Holdings
+                </button>
+                  
+                 <button 
+                    className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow focus:outline-none hover:bg-blue-600"
+                    onClick={() => navigator('/profile')}
+                >
+                    Profile
+                </button>
+
+                {/* Location Button */}
+                <button 
+                    className="px-4 py-2 bg-green-500 text-white rounded-lg shadow focus:outline-none hover:bg-green-600"
+                >
+                    Location
+                </button>
+
+                {/* Date Button */}
+                <button 
+                    className="px-4 py-2 bg-green-500 text-white rounded-lg shadow focus:outline-none hover:bg-green-600"
+                >
+                    Date
+                </button>
                 </div>
-                <Menu mode="horizontal" defaultSelectedKeys={['2']} className="flex-grow">
-                    <Menu.Item key="1" className="menu-item">
-                        Stays
-                    </Menu.Item>
-                    <Menu.Item key="2" className="menu-item">
-                        Experiences
-                    </Menu.Item>
-                    <Menu.Item key="3" className="menu-item">
-                        Online Experiences
-                    </Menu.Item>
-                    <Menu.Item key="4" className="menu-item"
-                        onClick={() => navigator('/trips')}
-                    >
-                        My Trips
-                    </Menu.Item>
-                    <Menu.Item key="5" className="menu-item"
-                        onClick={() => navigator('/holdings')}
-                    >
-                        My Holdings
-                    </Menu.Item>
-                </Menu>
-                <div className="flex items-center space-x-4">
-                    <button className="text-gray-600 hover:text-gray-800 transition-colors"
-                        onClick={() => navigator('/profile')}
-                    >My Profile</button>
-                    <HomeOutlined />
-                    <MenuOutlined />
-                </div>
-            </Header>
-        </Layout>
+            </div>
+        </header>
     );
 };
