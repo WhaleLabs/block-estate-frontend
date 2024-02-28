@@ -28,7 +28,7 @@ export default function Property() {
     }, [propertyId]);
 
     return (
-        <div className='w-[100vw] h-[100vh] overflow-y-auto'>
+        <div className='w-[100vw] h-[100vh]'>
             {(property && !loading) ?
             <div className="p-6 w-full md:p-12 lg:p-12 text-primary-text">
                 <h1>{property.title}</h1>

@@ -6,7 +6,7 @@ export function AppHeader() {
     const translateClass = (scrollDirection === 'down') ? '-translate-y-full' : 'translate-y-0';
 
     return (
-        <header className={`transform ${translateClass} transition-transform duration-600 sticky top-0 bg-transparent shadow-lg`}>
+        <header className={`transform ${translateClass} transition-transform duration-600 sticky top-0 bg-white shadow-lg`}>
             <div className="max-w-screen-xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
             <div className="flex justify-center items-center">
                 <div className="relative w-full max-w-md">

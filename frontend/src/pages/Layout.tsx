@@ -9,7 +9,7 @@ export default function Layout() {
     // const hiddenClass = (scrollDirection === 'down') ? 'opacity-0' : '';
 
     return (
-        <div className='w-[100vw] md:h-[100vh] md:flex md:flex-col lg:h-[100vh] lg:flex lg:flex-col overflow-hidden relative'>
+        <div className='w-[100vw] md:h-[100vh] md:flex md:flex-col lg:h-[100vh] lg:flex lg:flex-col overflow-y-auto overflow-x-hidden relative'>
             <AppHeader/>
             <Outlet/>
         </div>

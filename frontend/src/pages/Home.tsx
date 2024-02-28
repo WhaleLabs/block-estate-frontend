@@ -10,7 +10,7 @@ export default function Home() {
     const [loading, setLoading] = useState<boolean>(false);
 
     return (
-        <div className='w-[100vw] h-[100vh] overflow-y-auto'>
+        <div className='w-[100vw] h-[100vh]'>
             <div className="p-6 w-full md:p-12 lg:p-12">  
                 {/* <button className="self-center text-primary-text bg-red-100 p-2 m-6 hover:bg-red-400" onClick={() => setLoading(true)}>TEST LOADING</button> */}
                 <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4'>
