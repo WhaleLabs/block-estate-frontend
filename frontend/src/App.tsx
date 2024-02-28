@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route  } from "react-router-dom"
 import Layout from './pages/Layout'
 import Home from './pages/Home'
 import Property from "./pages/Property"
+import { Payment } from "./pages/Payment"
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
               <Property
               />}
             />
+            <Route path="/checkout" element={<Payment />} />
           </Route>
         </Routes>
       </BrowserRouter>

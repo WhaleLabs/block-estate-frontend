@@ -5,4 +5,16 @@ export type PropertyType = {
     location: string;
     price: number;
     rating: number;
+    pictures: string[];
+};
+
+export type ReservationType = {
+    pricePerNight: number;
+    nights: number;
+    cleaningFee: number;
+    serviceFee: number;
+    total: number;
+    checkIn: string;
+    checkOut: string;
+    guests: number;
 };
