@@ -1,5 +1,5 @@
 import { TripCard } from '../components/TripCard';
-import { tripData } from '../utils/tripMock';
+import { tripData } from '../utils/mock';
 
 export default function Trips() {
 	const completedTrips = tripData.filter(trip => trip.status === 'Completed');
