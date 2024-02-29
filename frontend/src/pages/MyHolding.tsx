@@ -30,10 +30,10 @@ export default function MyHolding() {
     }, [holdingId]);
 
     return (
-        <div className='w-[100vw] h-[100vh] flex flex-row justify-center items-start p-12'>
+        <div className='w-[100vw] h-[100vh] flex flex-row justify-center items-start py-[5%] px-[10%]'>
             {(holding && !loading) ?
                 <>
-                    <div className='w-1/4 p-6 rounded-xl border-2 h-[75%]'>
+                    <div className='w-1/4 p-6 rounded-xl border-2 h-[70vh]'>
                         <h1 className="text-xl text-black font-semibold mb-4">{holding.title}</h1>
                         <img src={holding.image} alt="" className="w-full mb-4 rounded-lg" />
                         <button
@@ -48,6 +48,24 @@ export default function MyHolding() {
                         >
                             Proposals
                         </button>
+                        <div className="py-4">
+                            <h2 className="text-black text-xl font-semibold">
+                                Your Tokens: {holding.tokens}
+                            </h2>
+                            <div className="flex items-center flex-col py-4 text-start">
+                                <h2 className="text-black text-xl font-semibold py-2">You have {holding.numNFTs} NFTs</h2>
+                                <div className="relative inline-block w-16 h-16">
+                                    <svg className="absolute -top-0.5 -left-0.5 w-full h-full" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="12" cy="12" r="10" stroke="#E0E0E0" strokeWidth="4" />
+                                        <circle className="progress-ring" cx="12" cy="12" r="10" stroke="#3B82F6" strokeWidth="4" strokeDasharray={`${(holding.numNFTs / 20) * 63} 63`} transform="rotate(-90 12 12)" />
+                                    </svg>
+                                    <div className="absolute inset-0 flex items-center justify-center">
+                                        <span className="text-black text-1xl font-bold">{(holding.numNFTs * 100)/20}%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                     <div className='w-3/4 px-4'>
                         <Outlet />

@@ -7,7 +7,6 @@ export default function Proposal() {
                 <h2 className="text-4xl font-bold mb-8 text-black">
                     Propositions
                 </h2>
-
                 <div className="flex items-center justify-center mb-8">
                     <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         Create Proposal
@@ -15,17 +14,23 @@ export default function Proposal() {
                 </div>
             </div>
 
-            {/* Other People's Comments */}
             <div className="w-full max-w-lg">
-                <h2 className="text-xl font-bold mb-4">Other People's Comments</h2>
-                {/* Here you can map through an array of comments and render them */}
-                <div className="bg-gray-100 p-4 rounded-lg mb-4">
-                    <p className="text-lg">Comment 1</p>
+                {/* Replace with a map function */}
+                <div className="flex flex-row justify-between items-center mb-4 border-2 rounded-md px-4">
+                    <div className="flex flex-row items-center">
+                        <img src="https://via.placeholder.com/150" alt="" className="w-12 h-12 rounded-full" />
+                        <div className="ml-4">
+                            <h2 className="text-xl font-bold">John Doe</h2>
+                            <p className="text-gray-600">Proposal for 10% of the tokens</p>
+                        </div>
+                    </div>
+                    <div className="ml-4">
+                        <p className="text-gray-600">Status: Pending</p>
+                    </div>
+                    <div className="ml-4">
+                        <p className="text-gray-600">Date: 12/12/2021</p>
+                    </div>
                 </div>
-                <div className="bg-gray-100 p-4 rounded-lg mb-4">
-                    <p className="text-lg">Comment 2</p>
-                </div>
-                {/* Add more comments as needed */}
             </div>
         </div>
     );
