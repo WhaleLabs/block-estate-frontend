@@ -35,7 +35,7 @@ export default function Property() {
     }, [propertyId]);
 
     return (
-        <div className='w-[100vw] h-[100vh]'>
+        <div className='w-[100vw] h-[100vh] mt-16'>
             {(property && !loading) ?
             <div className="p-6 w-full md:p-12 md:px-30 lg:py-12 lg:px-48 text-primary-text">
                 
@@ -70,7 +70,7 @@ export default function Property() {
                         <p className="mt-4">AAAAAAA</p>
                     </div>
                     <div className="">
-                        <ReserveSection reservation={reservation} loading={loading}/>
+                        <ReserveSection id={propertyId} reservation={reservation} loading={loading}/>
                     </div>
                 </div>
 

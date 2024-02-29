@@ -2,8 +2,8 @@ import { useNavigate } from 'react-router-dom';
 // import { DatePicker, Space } from 'antd';
 import { ReservationType } from '../utils/types';
 
-export function ReserveSection({reservation, loading} : 
-    {reservation: ReservationType | null, loading: boolean}) {
+export function ReserveSection({id, reservation, loading} : 
+    {id: string, reservation: ReservationType | null, loading: boolean}) {
 
     // Calculate total price for stay
     const totalPrice = reservation ? reservation.pricePerNight * reservation.nights : 0;
@@ -53,7 +53,7 @@ export function ReserveSection({reservation, loading} :
 
                         <button 
                             className="w-full bg-primary-600 text-white text-lg font-semibold py-2 px-4 rounded-lg mb-2 hover:bg-primary-700 transition-colors"
-                            onClick={() => navigator('/checkout')}
+                            onClick={() => navigator(`/checkout/${id}`)}
                         >
                             Reserve
                         </button>

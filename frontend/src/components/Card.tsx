@@ -18,7 +18,7 @@ export function Card({id, image, title, location, price, rating, loading} :
             </div>
             :
             <>
-                <img src={image} alt="" className="aspect-square rounded-xl object-cover w-full" />
+                <img src={image} alt="" className="aspect-square rounded-xl object-cover w-full hover:brightness-90" />
                 <div className="flex flex-row">
                     <div className="py-2 w-[80%]">
                         <h2 className="font-semibold text-primary-text">{title}</h2>

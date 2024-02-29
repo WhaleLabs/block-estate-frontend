@@ -22,7 +22,10 @@ function App() {
               <Property
               />}
             />
-            <Route path="/checkout" element={<Payment />} />
+            <Route path="/checkout/:id" element={
+              <Payment 
+              />} 
+            />
           </Route>
         </Routes>
       </BrowserRouter>
