@@ -1,8 +1,10 @@
-import { FaStar } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { FaRedo } from 'react-icons/fa';
 import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Progress } from "@/components/ui/progress"
+
+// Precisa fazer novas props só para projeto
 
 export function CardProject({id, pictures, title, location, price, rating, loading} : 
     {id: number, pictures: string[], title: string, location: string, price: number, rating: number, loading: boolean}) {
@@ -27,6 +29,13 @@ export function CardProject({id, pictures, title, location, price, rating, loadi
     };
 
     const navigator = useNavigate();
+
+    const [progress, setProgress] = useState(13);
+
+    useEffect(() => {
+        const timer = setTimeout(() => setProgress(66), 500)
+        return () => clearTimeout(timer)
+    }, [])
 
     return (
         <div className="aspect-[3/4] bg-transparent rounded-xl overflow-hidden cursor-pointer transition-transform duration-200 hover:scale-105"
@@ -92,15 +101,15 @@ export function CardProject({id, pictures, title, location, price, rating, loadi
                         }
                     </div>
                 </div>
+                <Progress value={progress} className="w-full mt-4 mb-2 h-3" />
                 <div className="flex flex-row">
-                    <div className="py-2 w-[80%]">
+                    <div className="py-2 w-[60%]">
                         <h2 className="font-semibold text-primary-text">{title}</h2>
                         <p className="text-sm text-secondary-text">{location}</p>
-                        <p className="text-sm text-secondary-text">${price}/night</p>
                     </div>
-                    <div className="p-2 w-[20%] flex flex-row justify-end items-center space-x-2">
-                        <p className='text-sm text-secondary-text'>{rating}</p>
-                        <FaStar size={15} color='black'/>
+                    <div className="py-2 w-[40%] flex flex-col justify-center items-end px-2">
+                        <p className="text-md font-semibold text-primary-text">${price} mi</p>
+                        <p className="text-sm text-primary-600">{progress}%</p>
                     </div>
                 </div>
             </div>

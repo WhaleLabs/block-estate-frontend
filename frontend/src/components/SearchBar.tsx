@@ -6,6 +6,7 @@ import DatePicker from './DatePicker';
 import { addDays } from "date-fns"
 import { DateRange } from 'react-day-picker';
 import { Search } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 
 export default function SearchBar({filteredLocation, setFilteredLocation} : {filteredLocation: LocationType[], setFilteredLocation: React.Dispatch<React.SetStateAction<LocationType[]>>}) {
 
@@ -39,6 +40,9 @@ export default function SearchBar({filteredLocation, setFilteredLocation} : {fil
         to: addDays(new Date(2022, 0, 20), 20),
     })
 
+    const location = useLocation();
+    const isProjects = location.pathname.startsWith('/projects')
+
     return (
         <div
             className='flex-1 w-full flex-1 bg-transparent text-sm text-primary-text border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent'
@@ -51,7 +55,7 @@ export default function SearchBar({filteredLocation, setFilteredLocation} : {fil
             <input
                 className="relative px-4 py-2 bg-transparent outline-none focus:outline-none placeholder:text-primary-text"
                 type="text"
-                placeholder="Search destination"
+                placeholder={!(isProjects) ? "Search destination" : "Search location"}
                 value={searchTerm}
                 onChange={handleLocationChange}
                 onMouseEnter={() => setIsOpen(true)}
@@ -78,8 +82,9 @@ export default function SearchBar({filteredLocation, setFilteredLocation} : {fil
             
 
             {/* Calendar Section */}
-
-            <DatePicker className="" date={date} setDate={setDate}/>
+            {!isProjects && 
+                <DatePicker className="" date={date} setDate={setDate}/>
+            }
 
             <div 
                 className="flex items-center bg-primary-600 text-white p-2 rounded-full shadow-sm cursor-pointer"
