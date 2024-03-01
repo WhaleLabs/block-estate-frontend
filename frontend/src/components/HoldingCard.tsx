@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { FaRedo } from 'react-icons/fa';
 import { HoldingType } from '../utils/types'; // Import HoldingType from your types file
+import { MdLocationOn, MdDateRange } from 'react-icons/md';
 
 export function HoldingCard({ id, image, title, location, price, rating, startDate, endDate, status, tokens, numNFTs, loading, pictures }:
     HoldingType & { loading: boolean }) {
@@ -19,11 +20,15 @@ export function HoldingCard({ id, image, title, location, price, rating, startDa
                 :
                 <>
                     <div className="flex flex-row h-[-webkit-fill-available]">
+
                         <div className="py-4 px-6 w-full flex flex-col justify-between bg-white rounded-xl">
                             {/* Section above */}
                             <div className="w-full">
                                 <h2 className="font-semibold text-lg text-primary-text">{title}</h2>
-                                <p className="text-m text-gray-600">{location}</p>
+                                <div className="flex items-center text-m text-gray-600">
+                                    <MdLocationOn className="text-gray-400 mr-2" />
+                                    {location}
+                                </div>
                                 <p className="text-lg text-primary-text font-bold">${price}</p>
                             </div>
 
@@ -33,8 +38,14 @@ export function HoldingCard({ id, image, title, location, price, rating, startDa
                             {/* Section below */}
                             <div className="w-full flex flex-row justify-between">
                                 <div>
-                                    <p className="text-m text-gray-600">Start Date: {startDate}</p>
-                                    <p className="text-m text-gray-600">End Date: {endDate}</p>
+                                    <div className="flex items-center text-m text-gray-600">
+                                        <MdDateRange className="text-gray-400 mr-2" />
+                                        Start Date: {startDate}
+                                    </div>
+                                    <div className="flex items-center text-m text-gray-600">
+                                        <MdDateRange className="text-gray-400 mr-2" />
+                                        End Date: {endDate}
+                                    </div>
                                     <p className="text-m text-gray-600">Status: {status}</p>
                                 </div>
 
@@ -47,10 +58,8 @@ export function HoldingCard({ id, image, title, location, price, rating, startDa
                                 </div>
                             </div>
                         </div>
-
                         <img src={image} alt="" className="aspect-square rounded-xr object-cover w-[40%]" />
                     </div>
-
                 </>
             }
         </div>
