@@ -67,6 +67,8 @@ export default function CreateProposal() {
             proposalAmount: proposalAmount,
             proposalTitle: proposalTitle,
             proposalDescription: proposalDescription,
+            owner: 'John Doe', // Replace with actual owner
+            timestamp: new Date().toISOString(),
             holding
         };
 

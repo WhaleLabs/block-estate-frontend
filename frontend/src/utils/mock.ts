@@ -290,3 +290,39 @@ export const holdingData = [
         ]
     },
 ];
+
+export const proposalData = [
+    {
+        id: 1,
+        owner: 'John Doe',
+        timestamp: '2024-03-01',
+        image: 'https://source.unsplash.com/random',
+        title: 'Proposal 1',
+        type: 'sell',
+        amount: 500000,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere nulla nec quam posuere, a vehicula turpis lacinia. Cras id erat in ligula volutpat ultricies a id dui. Duis interdum nisl nec ipsum ullamcorper, a facilisis est dignissim. Nullam at nulla nec nunc dictum sodales ut nec lectus.',
+        status: 'Pending'
+    },
+    {
+        id: 2,
+        owner: 'Alice Smith',
+        timestamp: '2024-03-05',
+        image: 'https://source.unsplash.com/random',
+        title: 'Proposal 2',
+        type: 'bailout',
+        amount: 800000,
+        description: 'Sed suscipit bibendum ligula id placerat. Aliquam ut urna nec arcu rhoncus mattis. Maecenas eleifend sodales neque, et placerat nisi sollicitudin in. Nam lacinia luctus nulla eu placerat. Donec lobortis aliquet ipsum, eu iaculis lacus faucibus nec. Phasellus sodales, arcu at consectetur scelerisque, justo orci tincidunt libero, vel eleifend justo nulla nec nisi.',
+        status: 'Approved'
+    },
+    {
+        id: 3,
+        owner: 'Emily Johnson',
+        timestamp: '2024-03-10',
+        image: 'https://source.unsplash.com/random',
+        title: 'Proposal 3',
+        type: 'sell',
+        amount: 700000,
+        description: 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris varius dui quis convallis gravida. Aliquam vel ligula nec magna sodales mattis. Vestibulum posuere erat in mauris scelerisque, sed convallis elit congue. Cras pharetra interdum enim id tristique.',
+        status: 'Rejected'
+    }
+];
