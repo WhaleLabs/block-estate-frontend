@@ -10,17 +10,27 @@ import HoldingInfo from "./pages/HoldingInfo"
 import Proposal from "./pages/Proposal"
 import CreateProposal from "./pages/CreateProposal"
 import { Payment } from "./pages/Payment"
+import { useState } from "react"
+import { locationData } from "./utils/mock"
 
 function App() {
+
+  const [filteredLocation, setFilteredLocation] = useState(locationData);
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={
           <Layout
+            filteredLocation={filteredLocation}
+            setFilteredLocation={setFilteredLocation}
           />
         }>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={
+            <Home 
+              filteredLocation={filteredLocation}
+            />
+          } />
           <Route path="/profile" element={<Profile />} />
           <Route path="/trips" element={<Trips />} />
           <Route path="/holdings" element={<Holdings />} />

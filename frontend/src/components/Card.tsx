@@ -56,7 +56,6 @@ export function Card({id, pictures, title, location, price, rating, loading} :
                                     }`}
                                 />
                                 <img
-                                    key={index}
                                     src={image}
                                     alt={`Slide ${index + 1}`}
                                     className={`-z-10 absolute aspect-square rounded-xl object-cover hover:brightness-9 top-0 left-0 w-full ${

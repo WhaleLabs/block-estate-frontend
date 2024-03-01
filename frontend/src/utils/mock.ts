@@ -34,6 +34,16 @@ export const chainsData = [
     { value: 'Chain3', label: 'Chain 3' }
 ];
 
+export const locationData = [
+    { value: 'Denver, CO, USA', label: 'Denver, CO, USA' },
+    { value: 'New York City, NY, USA', label: 'New York City, NY, USA' },
+    { value: 'Ilhabela, SP, Brazil', label: 'Ilhabela, SP, Brazil' },
+    { value: 'Los Angeles, CA, USA', label: 'Los Angeles, CA, USA' },
+    { value: 'Chicago, IL, USA', label: 'Chicago, IL, USA' },
+    { value: 'San Francisco, CA, USA', label: 'San Francisco, CA, USA' },
+    { value: 'Seattle, WA, USA', label: 'Seattle, WA, USA' },
+]
+
 export const cardData = [
     {
         id: 1,

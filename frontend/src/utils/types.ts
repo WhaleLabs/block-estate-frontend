@@ -8,6 +8,11 @@ export type PropertyType = {
     pictures: string[];
 };
 
+export type LocationType = {
+    label: string;
+    value: string;
+};
+
 export type HoldingType = {
     id: number;
     title: string;
