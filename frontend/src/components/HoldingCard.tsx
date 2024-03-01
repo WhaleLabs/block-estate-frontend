@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { FaRedo } from 'react-icons/fa';
 import { HoldingType } from '../utils/types'; // Import HoldingType from your types file
+import { MdLocationOn, MdDateRange } from 'react-icons/md';
 
 export function HoldingCard({ id, image, title, location, price, rating, startDate, endDate, status, tokens, numNFTs, loading, pictures }:
     HoldingType & { loading: boolean }) {
@@ -19,22 +20,43 @@ export function HoldingCard({ id, image, title, location, price, rating, startDa
                 :
                 <>
                     <div className="flex flex-row h-[-webkit-fill-available]">
-                        <div className="py-4 px-6 w-full flex flex-col justify-between bg-white rounded-xl">
+
+                        <div className="py-4 px-6 w-full flex flex-col justify-evenly bg-white rounded-xl">
                             {/* Section above */}
-                            <div className="w-full">
-                                <h2 className="font-semibold text-lg text-primary-text">{title}</h2>
-                                <p className="text-m text-gray-600">{location}</p>
-                                <p className="text-lg text-primary-text font-bold">${price}</p>
+                            <div className='flex justify-between items-end'>
+                                <div className="w-full">
+                                    <h2 className="font-semibold text-lg text-primary-text">{title}</h2>
+                                    <div className="flex items-center text-m text-gray-600">
+                                        <MdLocationOn className="text-gray-400 mr-2" />
+                                        {location}
+                                    </div>
+                                    <p className="text-lg text-primary-text font-bold">${price}</p>
+                                </div>
+                                <div className="relative inline-block w-20 h-20"> {/* Adjusted dimensions */}
+                                    <svg className="absolute -top-0.5 -left-0.5 w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="16" cy="16" r="14" stroke="#E0E0E0" strokeWidth="4" /> {/* Adjusted radius and stroke width */}
+                                        <circle className="progress-ring" cx="16" cy="16" r="14" stroke="#3B82F6" strokeWidth="4" strokeDasharray={`${(numNFTs / 20) * 88} 88`} transform="rotate(-90 16 16)" /> {/* Adjusted radius, stroke width, and strokeDasharray */}
+                                    </svg>
+                                    <div className="absolute inset-0 flex items-center justify-center">
+                                        <span className="text-black text-lg font-bold">{(numNFTs * 100) / 20}%</span> {/* Adjusted font size */}
+                                    </div>
+                                </div>
                             </div>
 
                             {/* Border line */}
-                            <div className="hidden md:block border-b border-gray-300 my-4"></div>
+                            <div className="hidden md:block border-b border-gray-300 my-2"></div>
 
                             {/* Section below */}
                             <div className="w-full flex flex-row justify-between">
                                 <div>
-                                    <p className="text-m text-gray-600">Start Date: {startDate}</p>
-                                    <p className="text-m text-gray-600">End Date: {endDate}</p>
+                                    <div className="flex items-center text-m text-gray-600">
+                                        <MdDateRange className="text-gray-400 mr-2" />
+                                        Start Date: {startDate}
+                                    </div>
+                                    <div className="flex items-center text-m text-gray-600">
+                                        <MdDateRange className="text-gray-400 mr-2" />
+                                        End Date: {endDate}
+                                    </div>
                                     <p className="text-m text-gray-600">Status: {status}</p>
                                 </div>
 
@@ -47,10 +69,8 @@ export function HoldingCard({ id, image, title, location, price, rating, startDa
                                 </div>
                             </div>
                         </div>
-
-                        <img src={image} alt="" className="aspect-square rounded-xr object-cover w-[40%]" />
+                        <img src={image} alt="" className="aspect-square rounded-xr object-cover w-[100%]" />
                     </div>
-
                 </>
             }
         </div>

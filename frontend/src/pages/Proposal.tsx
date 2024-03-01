@@ -1,5 +1,7 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import ProposalCard from '../components/ProposalCard';
+import { proposalData } from '../utils/mock';
 
 export default function Proposal() {
 
@@ -23,23 +25,20 @@ export default function Proposal() {
                 </div>
             </div>
 
-            <div className="w-full max-w-lg">
-                {/* Replace with a map function */}
-                <div className="flex flex-row justify-between items-center mb-4 border-2 rounded-md px-4">
-                    <div className="flex flex-row items-center">
-                        <img src="https://via.placeholder.com/150" alt="" className="w-12 h-12 rounded-full" />
-                        <div className="ml-4">
-                            <h2 className="text-xl font-bold">John Doe</h2>
-                            <p className="text-gray-600">Proposal for 10% of the tokens</p>
-                        </div>
-                    </div>
-                    <div className="ml-4">
-                        <p className="text-gray-600">Status: Pending</p>
-                    </div>
-                    <div className="ml-4">
-                        <p className="text-gray-600">Date: 12/12/2021</p>
-                    </div>
-                </div>
+            <div className="w-full px-4">
+                {proposalData.map((proposal, index) => (
+                    <ProposalCard
+                        key={index}
+                        owner={proposal.owner}
+                        timestamp={proposal.timestamp}
+                        title={proposal.title}
+                        type={proposal.type}
+                        amount={proposal.amount}
+                        description={proposal.description}
+                        image={proposal.image}
+                        status={proposal.status}
+                    />
+                ))}
             </div>
         </div>
     );
