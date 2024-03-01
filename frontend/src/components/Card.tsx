@@ -16,14 +16,14 @@ export function Card({id, pictures, title, location, price, rating, loading} :
         setIsTransitioning(true);
         const newIndex = (currentImageIndex - 1 + pictures.length) % pictures.length;
         setCurrentImageIndex(newIndex);
-        setTimeout(() => setIsTransitioning(false), 300);
+        setTimeout(() => setIsTransitioning(false), 1000);
     };
 
     const goToNextImage = () => {
         setIsTransitioning(true);
         const newIndex = (currentImageIndex + 1) % pictures.length;
         setCurrentImageIndex(newIndex);
-        setTimeout(() => setIsTransitioning(false), 300);
+        setTimeout(() => setIsTransitioning(false), 1000);
     };
 
     const navigator = useNavigate();
@@ -43,17 +43,27 @@ export function Card({id, pictures, title, location, price, rating, loading} :
                     onMouseEnter={() => setIsHidden(false)}
                     onMouseLeave={() => setIsHidden(true)}
                 >
-                    <div className="relative aspect-square w-full">
+                    <div className="relative aspect-square w-full rounded-xl overflow-hidden">
                         {pictures.map((image, index) => (
-                            <img
-                            key={index}
-                            src={image}
-                            alt={`Slide ${index + 1}`}
-                            className={`absolute aspect-square rounded-xl object-cover hover:brightness-9 top-0 left-0 w-full transition-opacity duration-300 ${
-                                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-                                } ${isTransitioning && 'pointer-events-none'}
-                            }`}
-                            />
+                            <>
+                                <img
+                                    key={index}
+                                    src={image}
+                                    alt={`Slide ${index + 1}`}
+                                    className={`absolute aspect-square rounded-xl object-cover hover:brightness-9 top-0 left-0 w-full ${
+                                        index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                                        } ${isTransitioning && 'pointer-events-none -translate-x-[100%] transition'}
+                                    }`}
+                                />
+                                <img
+                                    key={index}
+                                    src={image}
+                                    alt={`Slide ${index + 1}`}
+                                    className={`-z-10 absolute aspect-square rounded-xl object-cover hover:brightness-9 top-0 left-0 w-full ${
+                                        index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                                    }`}
+                                />
+                            </>
                         ))}
                     </div>
                     <div className="absolute right-3 top-[40%]">
