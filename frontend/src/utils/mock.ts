@@ -181,7 +181,7 @@ export const cardData = [
     },
     {
         id: 10,
-        title: 'House Card 9',
+        title: 'House Card 10',
         image: pic3_1,
         location: 'New York City, NY, USA',
         price: 100,

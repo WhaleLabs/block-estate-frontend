@@ -1,9 +1,30 @@
 import { FaStar } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { FaRedo } from 'react-icons/fa';
+import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
+import { useState } from 'react';
 
-export function Card({id, image, title, location, price, rating, loading} : 
-    {id: number, image: string, title: string, location: string, price: number, rating: number, loading: boolean}) {
+export function Card({id, pictures, title, location, price, rating, loading} : 
+    {id: number, pictures: string[], title: string, location: string, price: number, rating: number, loading: boolean}) {
+
+    const [isHidden, setIsHidden] = useState(true);
+
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [isTransitioning, setIsTransitioning] = useState(false);
+
+    const goToPrevImage = () => {
+        setIsTransitioning(true);
+        const newIndex = (currentImageIndex - 1 + pictures.length) % pictures.length;
+        setCurrentImageIndex(newIndex);
+        setTimeout(() => setIsTransitioning(false), 300);
+    };
+
+    const goToNextImage = () => {
+        setIsTransitioning(true);
+        const newIndex = (currentImageIndex + 1) % pictures.length;
+        setCurrentImageIndex(newIndex);
+        setTimeout(() => setIsTransitioning(false), 300);
+    };
 
     const navigator = useNavigate();
 
@@ -17,8 +38,51 @@ export function Card({id, image, title, location, price, rating, loading} :
                 <FaRedo size={20} color='white' className="animate-spin"/>
             </div>
             :
-            <>
-                <img src={image} alt="" className="aspect-square rounded-xl object-cover w-full hover:brightness-90" />
+            <div className='relative'>
+                <div
+                    onMouseEnter={() => setIsHidden(false)}
+                    onMouseLeave={() => setIsHidden(true)}
+                >
+                    <div className="relative aspect-square w-full">
+                        {pictures.map((image, index) => (
+                            <img
+                            key={index}
+                            src={image}
+                            alt={`Slide ${index + 1}`}
+                            className={`absolute aspect-square rounded-xl object-cover hover:brightness-9 top-0 left-0 w-full transition-opacity duration-300 ${
+                                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                                } ${isTransitioning && 'pointer-events-none'}
+                            }`}
+                            />
+                        ))}
+                    </div>
+                    <div className="absolute right-3 top-[40%]">
+                        {!isHidden &&
+                        <button 
+                            className='p-2 text-sm bg-white text-primary-text rounded-full shadow-xl opacity-75 hover:opacity-100' 
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                goToNextImage();
+                            }}
+                        >
+                                <MdArrowForwardIos/>
+                        </button>
+                        }
+                    </div>
+                    <div className="absolute left-3 top-[40%]">
+                        {(!isHidden && !(currentImageIndex === 0)) &&
+                        <button 
+                            className='p-2 text-sm bg-white text-primary-text rounded-full shadow-xl opacity-75 hover:opacity-100' 
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                goToPrevImage();
+                            }}
+                        >
+                            <MdArrowBackIos/>
+                        </button>
+                        }
+                    </div>
+                </div>
                 <div className="flex flex-row">
                     <div className="py-2 w-[80%]">
                         <h2 className="font-semibold text-primary-text">{title}</h2>
@@ -30,7 +94,7 @@ export function Card({id, image, title, location, price, rating, loading} :
                         <FaStar size={15} color='black'/>
                     </div>
                 </div>
-            </>
+            </div>
             }
         </div>
     );

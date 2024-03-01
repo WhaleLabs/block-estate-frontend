@@ -18,7 +18,7 @@ export default function Home() {
                         return <Card key={index} 
                                      id={card.id}
                                      title={card.title} 
-                                     image={card.pictures[0]} 
+                                     pictures={card.pictures} 
                                      location={card.location} 
                                      price={card.price} 
                                      rating={card.rating}
