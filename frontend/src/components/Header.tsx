@@ -7,7 +7,7 @@ export function AppHeader({isHidden} : {isHidden: boolean}) {
     const navigator = useNavigate();
 
     return (
-        <header className={`transform ${translateClass} transition-transform duration-600 sticky top-0 z-20 bg-white shadow-lg`}>
+        <header className={`transform ${translateClass} backdrop-blur-lg bg-white/30 transition-transform duration-600 absolute w-full top-0 z-20 shadow-lg`}>
             <div className="max-w-screen-xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-center items-center space-x-4">
                 {/* Search Input */}

@@ -9,6 +9,7 @@ import MyHolding from "./pages/MyHolding"
 import HoldingInfo from "./pages/HoldingInfo"
 import Proposal from "./pages/Proposal"
 import CreateProposal from "./pages/CreateProposal"
+import { Payment } from "./pages/Payment"
 
 function App() {
 
@@ -27,6 +28,23 @@ function App() {
             <Route path="/my-holding/:id/info" element={<HoldingInfo />} />
             <Route path="/my-holding/:id/proposal" element={<Proposal />} />
             <Route path="/my-holding/:id/create-proposal" element={<CreateProposal />} />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={
+            <Layout
+            />
+          }>
+            <Route path="/" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/trips" element={<Trips />} />
+            <Route path="/property/:id" element={
+              <Property
+              />}
+            />
+            <Route path="/checkout/:id" element={
+              <Payment 
+              />} 
+            />
           </Route>
           <Route path="/property/:id" element={
             <Property
