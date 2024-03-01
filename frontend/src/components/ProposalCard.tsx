@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 export default function ProposalCard({ title, owner, timestamp, type, amount, description, image, status }:
-    { title: string, owner:string, timestamp: string, type: string, amount: number, description: string, image: string, status: string }) {
+    { title: string, owner: string, timestamp: string, type: string, amount: number, description: string, image: string, status: string }) {
     const [expanded, setExpanded] = useState(false);
     const [vote, setVote] = useState('');
 
@@ -25,7 +26,11 @@ export default function ProposalCard({ title, owner, timestamp, type, amount, de
             <div>
                 <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-4">
-                        <img src={image} alt="Proposal" className="w-12 h-12 rounded-full" />
+                        {/* <img src={image} alt="Proposal" className="w-12 h-12 rounded-full" /> */}
+                        <Avatar>
+                            <AvatarImage src={image} />
+                            <AvatarFallback>{owner.charAt(0).toUpperCase()}</AvatarFallback>
+                        </Avatar>
                         <div>
                             <h2 className="text-lg font-semibold">{owner}</h2>
                             <p className="text-sm">
