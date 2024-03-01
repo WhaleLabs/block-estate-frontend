@@ -10,8 +10,6 @@ import pic6 from '../assets/imovel2_6.png';
 export const cardData = [
     {
         id: 1,
-        title: 'Card 1',
-        image: imovel1,
         title: 'House Card 1',
         image: pic0,
         location: 'Denver, CO, USA',
@@ -28,8 +26,6 @@ export const cardData = [
     },
     {
         id: 2,
-        title: 'Card 2',
-        image: imovel1,
         title: 'House Card 2',
         image: pic0,
         location: 'Denver, CO, USA',
@@ -46,8 +42,6 @@ export const cardData = [
     },
     {
         id: 3,
-        title: 'Card 3',
-        image: imovel1,
         title: 'House Card 3',
         image: pic0,
         location: 'Denver, CO, USA',
@@ -64,8 +58,6 @@ export const cardData = [
     },
     {
         id: 4,
-        title: 'Card 4',
-        image: imovel1,
         title: 'House Card 4',
         image: pic0,
         location: 'Denver, CO, USA',
@@ -82,8 +74,6 @@ export const cardData = [
     },
     {
         id: 5,
-        title: 'Card 5',
-        image: imovel1,
         title: 'House Card 5',
         image: pic0,
         location: 'Denver, CO, USA',
@@ -248,6 +238,14 @@ export const holdingData = [
         rating: 4.5,
         tokens: 100,
         numNFTs: 5,
+        pictures: [
+            pic1,
+            pic2,
+            pic3,
+            pic4,
+            pic5,
+            pic6,
+        ]
     },
     {
         id: 2,
@@ -261,6 +259,14 @@ export const holdingData = [
         rating: 4.8,
         tokens: 120,
         numNFTs: 3,
+        pictures: [
+            pic1,
+            pic2,
+            pic3,
+            pic4,
+            pic5,
+            pic6,
+        ]
     },
     {
         id: 3,
@@ -274,5 +280,13 @@ export const holdingData = [
         rating: 4.2,
         tokens: 80,
         numNFTs: 7,
+        pictures: [
+            pic1,
+            pic2,
+            pic3,
+            pic4,
+            pic5,
+            pic6,
+        ]
     },
 ];
