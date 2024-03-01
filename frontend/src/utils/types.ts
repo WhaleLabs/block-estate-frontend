@@ -5,6 +5,7 @@ export type PropertyType = {
     location: string;
     price: number;
     rating: number;
+    pictures: string[];
 };
 
 export type HoldingType = {

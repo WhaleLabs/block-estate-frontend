@@ -41,7 +41,7 @@ export function Payment() {
             <div className="absolute inset-0 z-0">
                 {property && !loading && (
                 <img
-                    src={property.pictures[1]}
+                    src={property.pictures[0]}
                     alt={property.title}
                     className="w-full h-full object-cover"
                 />

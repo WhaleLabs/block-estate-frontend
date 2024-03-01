@@ -1,15 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { menuOptions } from '../utils/data';
 
-export function AppHeader({isHidden} : {isHidden: boolean}) {
-
-    const options = [
-        { name: 'Home', link: '/' },
-        { name: 'Trips', link: '/trips' },
-        { name: 'My Holdings', link: '/' },
-        { name: 'Profile', link: '/profile' },
-      ];
-      
+export function AppHeader({isHidden} : {isHidden: boolean}) {      
 
     const translateClass = isHidden ? '-translate-y-full' : 'translate-y-0';
 
@@ -41,7 +34,10 @@ export function AppHeader({isHidden} : {isHidden: boolean}) {
 
                     {/* Dropdown Menu */}
 
-                    <div className="relative inline-block text-left w-56">
+                    <div 
+                        className="relative inline-block text-left w-56"
+                        onMouseLeave={() => setIsOpen(false)} 
+                    >
                         <button
                             onMouseEnter={() => setIsOpen(true)}
                             type="button"
@@ -67,11 +63,10 @@ export function AppHeader({isHidden} : {isHidden: boolean}) {
 
                         {isOpen && (
                             <div 
-                                onMouseLeave={() => setIsOpen(false)} 
-                                className="absolute right-0 mt-4 w-56 rounded-md bg-white"
+                                className="absolute right-0"
                             >
-                                <div className="py-1" role="menu" aria-orientation="vertical">
-                                    {options.map((option, index) => (
+                                <div className="py-1 mt-4 w-56 rounded-md bg-white" role="menu" aria-orientation="vertical">
+                                    {menuOptions.map((option, index) => (
                                     <button
                                         key={index}
                                         onClick={()  => handleOptionClick(option.link)}
