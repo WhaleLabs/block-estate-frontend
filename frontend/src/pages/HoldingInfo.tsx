@@ -30,18 +30,21 @@ export default function HoldingInfo() {
     return (
         <div className='flex flex-row'>
             {(holding && !loading) ?
-                <div className="p-6 w-full md:p-12 lg:p-12 text-primary-text rounded-xl border-2">
-                    <h1 className="text-2xl font-semibold mb-2">{holding.title}</h1>
-                    <img src={holding.image} alt="" className="w-full mb-4 rounded-lg" />
-                    <p className="text-lg mb-2">{holding.location}</p>
-                    <p className="text-lg mb-2">${holding.price.toLocaleString()}</p>
-                    <p className="text-lg mb-2">Rating: {holding.rating}</p>
-                    <p className="text-lg mb-2">Start Date: {holding.startDate}</p>
-                    <p className="text-lg mb-2">End Date: {holding.endDate}</p>
-                    <p className="text-lg mb-2">Status: {holding.status}</p>
-                    <p className="text-lg mb-2">Tokens: {holding.tokens}</p>
-                    <p className="text-lg mb-2">Number of NFTs: {holding.numNFTs}</p>
+                <div className="p-6 w-full text-black md:p-12 lg:p-12 bg-white rounded-xl border border-gray-300 shadow-lg">
+                    {/* <h1 className="text-3xl font-semibold mb-4">{holding.title}</h1> */}
+                    <img src={holding.image} alt={holding.title} className="w-full h-auto mb-4 rounded-lg" />
+                    <div className="text-lg mb-4">
+                        <p><strong className="text-gray-600">Location:</strong> {holding.location}</p>
+                        <p><strong className="text-gray-600">Price:</strong> ${holding.price.toLocaleString()}</p>
+                        <p><strong className="text-gray-600">Rating:</strong> {holding.rating}</p>
+                        {/* <p><strong className="text-gray-600">Start Date:</strong> {holding.startDate}</p>
+                        <p><strong className="text-gray-600">End Date:</strong> {holding.endDate}</p> */}
+                        {/* <p><strong className="text-gray-600">Status:</strong> {holding.status}</p> */}
+                        {/* <p><strong className="text-gray-600">Tokens:</strong> {holding.tokens}</p>
+                        <p><strong className="text-gray-600">Number of NFTs:</strong> {holding.numNFTs}</p> */}
+                    </div>
                 </div>
+
                 :
                 <></>}
         </div>

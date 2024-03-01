@@ -8,6 +8,7 @@ import Holdings from "./pages/Holdings"
 import MyHolding from "./pages/MyHolding"
 import HoldingInfo from "./pages/HoldingInfo"
 import Proposal from "./pages/Proposal"
+import CreateProposal from "./pages/CreateProposal"
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/my-holding/:id/" element={<MyHolding />} >
             <Route path="/my-holding/:id/info" element={<HoldingInfo />} />
             <Route path="/my-holding/:id/proposal" element={<Proposal />} />
+            <Route path="/my-holding/:id/create-proposal" element={<CreateProposal />} />
           </Route>
           <Route path="/property/:id" element={
             <Property

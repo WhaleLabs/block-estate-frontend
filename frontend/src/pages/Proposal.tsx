@@ -1,6 +1,13 @@
 import React from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 export default function Proposal() {
+
+    const navigator = useNavigate();
+
+    const params = useParams();
+    const holdingId = params.id || '';
+
     return (
         <div className="flex flex-col items-center justify-center">
             <div className='flex justify-between w-full px-4'>
@@ -8,7 +15,9 @@ export default function Proposal() {
                     Propositions
                 </h2>
                 <div className="flex items-center justify-center mb-8">
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                        onClick={() => navigator(`/my-holding/${holdingId}/create-proposal`)}
+                    >
                         Create Proposal
                     </button>
                 </div>
