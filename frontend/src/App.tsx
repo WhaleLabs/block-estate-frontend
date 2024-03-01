@@ -12,6 +12,9 @@ import CreateProposal from "./pages/CreateProposal"
 import { Payment } from "./pages/Payment"
 import { useState } from "react"
 import { locationData } from "./utils/mock"
+import Projects from "./pages/Projects"
+import Project from "./pages/Project"
+import { Funding } from "./pages/Funding"
 
 function App() {
 
@@ -41,17 +44,26 @@ function App() {
           </Route>
           <Route path="/property/:id" element={
             <Property
-            />}
-          />
+            />
+          }/>
           <Route path="/checkout/:id" element={
             <Payment
-            />}
-          />
+            />
+          }/>
+          <Route path="/projects" element={
+            <Projects
+              filteredLocation={filteredLocation}
+            />
+          } />
+          <Route path="/projects/:id" element={
+            <Project
+            />
+          } />
+          <Route path="/funding/:id" element={
+            <Funding
+            />
+          } />
         </Route>
-        <Route path="/property/:id" element={
-          <Property
-          />}
-        />
       </Routes>
     </BrowserRouter>
   )

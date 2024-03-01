@@ -3,8 +3,9 @@ import { useState } from 'react';
 import { Card } from '../components/Card';
 import { cardData } from '../utils/mock';
 import { LocationType } from '../utils/types';
+import { CardProject } from '@/components/CardProject';
 
-export default function Home({filteredLocation} : {filteredLocation: LocationType[]}) {
+export default function Projects({filteredLocation} : {filteredLocation: LocationType[]}) {
 
     // const navigator = useNavigate();
 
@@ -20,14 +21,15 @@ export default function Home({filteredLocation} : {filteredLocation: LocationTyp
                     {cardData
                         .filter(card => filteredLocation.some(location => location.label === card.location))
                         .map((card, index) => {
-                        return <Card key={index} 
-                                     id={card.id}
-                                     title={card.title} 
-                                     pictures={card.pictures} 
-                                     location={card.location} 
-                                     price={card.price} 
-                                     rating={card.rating}
-                                     loading={loading}
+                        return <CardProject
+                                    key={index} 
+                                    id={card.id}
+                                    title={card.title} 
+                                    pictures={card.pictures} 
+                                    location={card.location} 
+                                    price={card.price} 
+                                    rating={card.rating}
+                                    loading={loading}
                                 />
                     })}
                 </div>

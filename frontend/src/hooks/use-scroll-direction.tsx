@@ -13,7 +13,7 @@ export function useScrollDirection(threshold = 0) {
       if (Math.abs(scrollY - prevScrollY.current) >= threshold) {
         const newScrollDirection = scrollY > prevScrollY.current ? 'down' : 'up';
         setScrollDirection(newScrollDirection);
-        prevScrollY.current = scrollY;
+        prevScrollY.current = scrollY; // Update prevScrollY to current scroll position
       }
 
       blocking.current = false;

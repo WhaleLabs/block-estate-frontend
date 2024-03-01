@@ -26,7 +26,7 @@ export default function DatePicker({
             id="date"
             variant={"ghost"}
             className={cn(
-              "w-[240px] justify-start text-left font-normal",
+              "w-[240px] justify-start text-left font-normal rounded-full",
               !date && "text-muted-foreground"
             )}
           >
