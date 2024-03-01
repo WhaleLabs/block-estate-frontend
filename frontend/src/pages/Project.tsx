@@ -7,7 +7,7 @@ import { PhotoSection } from "../components/PhotoSection";
 import { MapSection } from "../components/MapSection";
 import { ReserveSection } from "../components/ReserveSection";
 
-export default function Property() {
+export default function Project() {
 
     const params = useParams();
     const propertyId = params.id || '';

@@ -41,7 +41,7 @@ export default function SearchBar({filteredLocation, setFilteredLocation} : {fil
 
     return (
         <div
-            className='flex-1 w-full flex-1 bg-transparent text-sm text-primary-text placeholder:text-primary-text border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent'
+            className='flex-1 w-full flex-1 bg-transparent text-sm text-primary-text border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent'
             onMouseLeave={() => setIsOpen(false)} 
         >
 
@@ -49,7 +49,7 @@ export default function SearchBar({filteredLocation, setFilteredLocation} : {fil
             <div className='flex flex-row items-center'>
             <div >
             <input
-                className="relative px-4 py-2 bg-transparent outline-none focus:outline-none"
+                className="relative px-4 py-2 bg-transparent outline-none focus:outline-none placeholder:text-primary-text"
                 type="text"
                 placeholder="Search destination"
                 value={searchTerm}

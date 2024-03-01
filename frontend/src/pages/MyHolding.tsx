@@ -30,7 +30,7 @@ export default function MyHolding() {
     }, [holdingId]);
 
     return (
-        <div className='w-[100vw] h-[100vh] flex flex-row justify-center items-start py-[5%] px-[10%] mt-16'>
+        <div className='w-[100vw] h-[100vh] flex flex-row justify-center items-start py-[5%] px-[10%]'>
             {(holding && !loading) ?
                 <>
                     <div className='w-1/4 p-6 rounded-xl border-2 h-[70vh] shadow-lg'>

@@ -3,8 +3,14 @@ import { useState } from 'react';
 import { menuOptions } from '../utils/data';
 import SearchBar from './SearchBar';
 import { LocationType } from '../utils/types';
+import { useScrollDirection } from '@/hooks/use-scroll-direction';
 
-export function AppHeader({isHidden, filteredLocation, setFilteredLocation} : {isHidden: boolean, filteredLocation: LocationType[], setFilteredLocation: React.Dispatch<React.SetStateAction<LocationType[]>>}) {
+export function AppHeader({filteredLocation, setFilteredLocation} : {filteredLocation: LocationType[], setFilteredLocation: React.Dispatch<React.SetStateAction<LocationType[]>>}) {
+
+    const scrollDirection = useScrollDirection(50);
+    const isHidden = (scrollDirection === 'down');
+
+    console.log(scrollDirection);
 
     const translateClass = isHidden ? '-translate-y-full' : 'translate-y-0';
 
@@ -17,7 +23,7 @@ export function AppHeader({isHidden, filteredLocation, setFilteredLocation} : {i
     };
 
     return (
-        <header className={`transform ${translateClass} backdrop-blur-lg bg-white/30 transition-transform duration-600 absolute w-full top-0 z-20 shadow-lg`}>
+        <header className={`transform ${translateClass} backdrop-blur-lg bg-white/30 transition-transform duration-600 sticky w-full top-0 z-20 shadow-lg`}>
             <div className="mx-auto px-4 sm:px-6 lg:px-12">
                 <div className="w-full flex justify-between items-center space-x-4">
 
