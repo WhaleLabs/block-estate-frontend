@@ -410,6 +410,8 @@ export const holdingData = [
         rating: 4.5,
         tokens: 100,
         numNFTs: 5,
+        holders: ['John Doe', 'Alice Smith', 'Emily Johnson'],
+        totalTokens: 500,
         pictures: [
             pic2_1,
             pic2_2,
@@ -431,6 +433,8 @@ export const holdingData = [
         rating: 4.8,
         tokens: 120,
         numNFTs: 3,
+        holders: ['John Doe', 'Alice Smith', 'Emily Johnson'],
+        totalTokens: 500,
         pictures: [
             pic2_1,
             pic2_2,
@@ -452,6 +456,8 @@ export const holdingData = [
         rating: 4.2,
         tokens: 80,
         numNFTs: 7,
+        holders: ['John Doe', 'Alice Smith', 'Emily Johnson'],
+        totalTokens: 500,
         pictures: [
             pic2_1,
             pic2_2,

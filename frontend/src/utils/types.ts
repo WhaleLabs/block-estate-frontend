@@ -20,6 +20,8 @@ export type HoldingType = {
     rating: number;
     tokens: number;
     numNFTs: number;
+    holders: string[]; // have to Change to an array of objects
+    totalTokens: number;
     pictures: string[];
 };
 

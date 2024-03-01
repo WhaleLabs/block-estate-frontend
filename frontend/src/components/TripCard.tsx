@@ -11,8 +11,8 @@ export function TripCard({ image, title, location, price, startDate, endDate, st
 }) {
     return (
         <div className="flex bg-white text-black rounded-xl shadow-md overflow-hidden">
-            <img src={image} alt="" className="w-[30%] object-cover" />
-            <div className="p-4 w-[70%] flex flex-col justify-between">
+            <img src={image} alt="" className="w-[40%] object-cover" />
+            <div className="p-4 w-[60%] flex flex-col justify-between">
                 <div>
                     <h2 className="font-semibold text-xl">{title}</h2>
                     <div className="flex items-center text-sm text-gray-600">
