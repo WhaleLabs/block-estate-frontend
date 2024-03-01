@@ -6,7 +6,7 @@ export default function Trips() {
 	const upcomingTrips = tripData.filter(trip => trip.status !== 'Completed');
 
 	return (
-		<div className="container w-[100vw] px-4 py-4 mt-4 overflow-y-scroll">
+		<div className="container mt-16 w-[100vw] px-[5vw] py-4">
 			<h1 className="text-3xl font-bold text-gray-800 mb-8">My Trips</h1>
 
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-8">

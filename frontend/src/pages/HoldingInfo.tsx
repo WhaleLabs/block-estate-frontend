@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import { holdingData } from '../utils/mock';
 import { HoldingType } from '../utils/types';
+import { PhotoSection } from "../components/PhotoSection";
 
 export default function HoldingInfo() {
 
@@ -32,7 +33,8 @@ export default function HoldingInfo() {
             {(holding && !loading) ?
                 <div className="p-6 w-full text-black md:p-12 lg:p-12 bg-white rounded-xl border border-gray-300 shadow-lg">
                     {/* <h1 className="text-3xl font-semibold mb-4">{holding.title}</h1> */}
-                    <img src={holding.image} alt={holding.title} className="w-full h-auto mb-4 rounded-lg" />
+                    {/* <img src={holding.image} alt={holding.title} className="w-full h-auto mb-4 rounded-lg" /> */}
+                    <PhotoSection pictures={holding.pictures} loading={loading}/>
                     <div className="text-lg mb-4">
                         <p><strong className="text-gray-600">Location:</strong> {holding.location}</p>
                         <p><strong className="text-gray-600">Price:</strong> ${holding.price.toLocaleString()}</p>

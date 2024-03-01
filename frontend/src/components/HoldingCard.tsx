@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaRedo } from 'react-icons/fa';
 import { HoldingType } from '../utils/types'; // Import HoldingType from your types file
 
-export function HoldingCard({ id, image, title, location, price, rating, startDate, endDate, status, tokens, numNFTs, loading }:
+export function HoldingCard({ id, image, title, location, price, rating, startDate, endDate, status, tokens, numNFTs, loading, pictures }:
     HoldingType & { loading: boolean }) {
 
     const navigator = useNavigate();
