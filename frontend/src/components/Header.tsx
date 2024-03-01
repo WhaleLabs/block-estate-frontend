@@ -18,65 +18,78 @@ export function AppHeader({isHidden, filteredLocation, setFilteredLocation} : {i
 
     return (
         <header className={`transform ${translateClass} backdrop-blur-lg bg-white/30 transition-transform duration-600 absolute w-full top-0 z-20 shadow-lg`}>
-            <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-center items-center space-x-4">
+            <div className="mx-auto px-4 sm:px-6 lg:px-12">
+                <div className="w-full flex justify-between items-center space-x-4">
 
-                    {/* Search with Distance, Date and Guests */}
+                    {/* Logo */}
 
-                    <SearchBar filteredLocation={filteredLocation} setFilteredLocation={setFilteredLocation}/>
-
-                    {/* Dropdown Menu */}
-
-                    <div 
-                        className="relative inline-block text-left w-56"
-                        onMouseLeave={() => setIsOpen(false)} 
+                    <h1 
+                        className='text-primary-600 p-2 font-semibold cursor-pointer'
+                        onClick={() => navigator('/')}
                     >
-                        <button
-                            onMouseEnter={() => setIsOpen(true)}
-                            type="button"
-                            className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-primary-text"
-                            aria-haspopup="true"
-                            aria-expanded="true"
-                        >
-                            Your Experience
-                            <svg
-                            className="-mr-1 ml-2 h-5 w-5"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            aria-hidden="true"
-                            >
-                            <path
-                                fillRule="evenodd"
-                                d="M10 12.586l-4.293-4.293a1 1 0 011.414-1.414L10 10.172l3.879-3.879a1 1 0 111.414 1.414L10 12.586z"
-                                clipRule="evenodd"
-                            />
-                            </svg>
-                        </button>
+                        blockestate
+                    </h1>               
 
-                        {isOpen && (
-                            <div 
-                                className="absolute right-0"
+                    <div className='flex flex-row'>
+
+                        {/* Search with Distance, Date and Guests */}
+
+                        <SearchBar filteredLocation={filteredLocation} setFilteredLocation={setFilteredLocation}/>
+
+                        {/* Dropdown Menu */}
+
+                        <div 
+                            className="relative inline-block text-left w-56"
+                            onMouseLeave={() => setIsOpen(false)} 
+                        >
+                            <button
+                                onMouseEnter={() => setIsOpen(true)}
+                                type="button"
+                                className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-primary-text"
+                                aria-haspopup="true"
+                                aria-expanded="true"
                             >
-                                <div className="py-1 mt-4 w-56 rounded-md bg-white" role="menu" aria-orientation="vertical">
-                                    {menuOptions.map((option, index) => (
-                                    <button
-                                        key={index}
-                                        onClick={()  => handleOptionClick(option.link)}
-                                        className="block px-4 py-2 text-sm text-primary-text hover:bg-gray-100 w-full text-left"
-                                        role="menuitem"
-                                    >
-                                        {option.name}
-                                    </button>
-                                    ))}
+                                Your Experience
+                                <svg
+                                className="-mr-1 ml-2 h-5 w-5"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                aria-hidden="true"
+                                >
+                                <path
+                                    fillRule="evenodd"
+                                    d="M10 12.586l-4.293-4.293a1 1 0 011.414-1.414L10 10.172l3.879-3.879a1 1 0 111.414 1.414L10 12.586z"
+                                    clipRule="evenodd"
+                                />
+                                </svg>
+                            </button>
+
+                            {isOpen && (
+                                <div 
+                                    className="absolute right-0"
+                                >
+                                    <div className="py-1 mt-4 w-56 rounded-md bg-white" role="menu" aria-orientation="vertical">
+                                        {menuOptions.map((option, index) => (
+                                        <button
+                                            key={index}
+                                            onClick={()  => handleOptionClick(option.link)}
+                                            className="block px-4 py-2 text-sm text-primary-text hover:bg-gray-100 w-full text-left"
+                                            role="menuitem"
+                                        >
+                                            {option.name}
+                                        </button>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
-                        )}
+                            )}
+                        </div>
+
                     </div>
 
                     {/* Connect Button */}
                     <button 
-                        className="px-4 py-2 my-2 bg-green-500 text-white rounded-lg shadow focus:outline-none hover:bg-green-600"
+                        className="px-4 py-2 my-2 bg-primary-500 text-white rounded-lg shadow focus:outline-none hover:bg-primary-600"
                     >
                         Connect Wallet
                     </button>

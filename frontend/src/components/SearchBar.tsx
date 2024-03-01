@@ -31,13 +31,13 @@ export default function SearchBar({filteredLocation, setFilteredLocation} : {fil
 
     return (
         <div
-            className='relative'
+            className='relative px-4 py-2  bg-transparent text-sm text-primary-text placeholder:text-primary-text border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent'
             onMouseLeave={() => setIsOpen(false)} 
         >
             <input
-                className="w-full px-4 py-2 bg-transparent text-sm text-primary-text placeholder:text-primary-text border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                className="w-full bg-transparent outline-none focus:outline-none"
                 type="text"
-                placeholder="Search..."
+                placeholder="Search destination"
                 value={searchTerm}
                 onChange={handleLocationChange}
                 onMouseEnter={() => setIsOpen(true)}
