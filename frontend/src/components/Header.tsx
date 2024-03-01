@@ -30,7 +30,7 @@ export function AppHeader({isHidden, filteredLocation, setFilteredLocation} : {i
                         blockestate
                     </h1>               
 
-                    <div className='flex flex-row'>
+                    <div className='flex flex-row items-center'>
 
                         {/* Search with Distance, Date and Guests */}
 

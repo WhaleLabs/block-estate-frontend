@@ -1,3 +1,5 @@
+import { DateRange } from "react-day-picker"
+
 export type PropertyType = {
     id: number;
     title: string;
@@ -40,3 +42,9 @@ export type ReservationType = {
     checkOut: string;
     guests: number;
 };
+
+export interface DatePickerProps {
+    className?: string;
+    date?: DateRange;
+    setDate: React.Dispatch<React.SetStateAction<DateRange | undefined>>;
+}

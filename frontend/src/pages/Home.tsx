@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { Card } from '../components/Card';
 import { cardData } from '../utils/mock';
 import { LocationType } from '../utils/types';
-import { Button } from '@/components/ui/button';
 
 export default function Home({filteredLocation} : {filteredLocation: LocationType[]}) {
 
