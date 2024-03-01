@@ -6,7 +6,7 @@ export function AppHeader({isHidden} : {isHidden: boolean}) {
     const options = [
         { name: 'Home', link: '/' },
         { name: 'Trips', link: '/trips' },
-        { name: 'My Holdings', link: '/' },
+        { name: 'My Holdings', link: '/holdings' },
         { name: 'Profile', link: '/profile' },
       ];
       

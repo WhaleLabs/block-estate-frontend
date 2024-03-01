@@ -7,9 +7,9 @@ export default function Holdings() {
     const [loading, setLoading] = useState<boolean>(false);
 
     return (
-        <div className='w-full h-full'>
-            <h2 className="text-3xl font-normal text-primary-text mt-10 ml-6">Current Holdings</h2>
-            <div className="p-6 w-full md:p-12 lg:p-12">
+        <div className='container mt-16 w-[100vw] px-[5vw] py-4'>
+            <h2 className="text-3xl font-bold text-gray-800">Current Holdings</h2>
+            <div className="w-full py-3">
                 <div className='grid grid-cols-1 gap-6'>
                     {holdingData.map((holding, index) => (
                         <HoldingCard
