@@ -26,6 +26,7 @@ export default function Holdings() {
                             tokens={holding.tokens}
                             numNFTs={holding.numNFTs}
                             loading={loading}
+                            pictures={holding.pictures}
                         />
                     ))}
                 </div>
