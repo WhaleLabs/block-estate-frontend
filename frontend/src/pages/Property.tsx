@@ -6,6 +6,7 @@ import { MdFavorite, MdShare } from 'react-icons/md';
 import { PhotoSection } from "../components/PhotoSection";
 import { MapSection } from "../components/MapSection";
 import { ReserveSection } from "../components/ReserveSection";
+import { DescriptionProperty } from "@/components/DescriptionProperty";
 
 export default function Property() {
 
@@ -42,7 +43,10 @@ export default function Property() {
                 {/* Title Section, where is the title and the buttons to share and save */}
 
                 <div className="flex flex-row pb-6 space-x-4">
-                    <h1 className=" flex-1 text-2xl font-semibold">{property.title}</h1>
+                    <div className="flex-1 flex flex-row items-center">
+                        <h1 className="text-2xl font-semibold">{property.title}</h1>
+                        <div className="mx-6 text-sm text-primary-600 border-[1px] border-primary-600 py-1 px-3 rounded-full">Property</div>
+                    </div>
                     {/* make as component */}
                     <button 
                         className="inline-flex items-center text-sm h-8 py-2 px-4 bg-transparent text-primary-text rounded-lg shadow focus:outline-none hover:bg-gray-100"
@@ -66,8 +70,7 @@ export default function Property() {
 
                 <div className="flex flex-col justify-between pt-6 md:flex-row md:space-x-6">
                     <div className="">
-                        <h2 className="text-xl font-semibold">Description</h2>
-                        <p className="mt-4">AAAAAAA</p>
+                        <DescriptionProperty loading={loading}/>
                     </div>
                     <div className="">
                         <ReserveSection id={propertyId} reservation={reservation} loading={loading}/>

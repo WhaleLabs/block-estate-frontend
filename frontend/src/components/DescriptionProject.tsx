@@ -1,18 +1,19 @@
 // import { useNavigate } from 'react-router-dom';
 
-export function DescriptionSection({loading} : 
+export function DescriptionProject({loading} : 
     {loading: boolean}) {
 
     // const navigator = useNavigate();
 
     return (
-        <div className=" bg-transparent rounded-xl overflow-hidden cursor-pointer">
+        <div className="">
             {loading ? 
             // Refazer o loading depois com algo um pouco melhor
             <></>
             :
-            <div className="w-full h-[200px] bg-red-100">
-                AAAAAAAAAAAAA
+            <div className="">
+                <h2 className="text-xl font-semibold">Description</h2>
+                <p className="mt-4">AAAAAAA</p>
             </div>
             }
         </div>
