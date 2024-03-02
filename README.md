@@ -60,7 +60,7 @@ The use of ERC 404 can support the solution in this way:
 
 - *Technical Architecture:*
 
-![Project Photo](frontend/src/assets/BusinessFlow.png)
+![Project Photo](frontend/src/assets/Architecture.png)
 
 - *Business Flow:*
 
@@ -134,7 +134,7 @@ _
  - [Github](https://github.com/luiz-lvj)
 
 *Daniel Yuki*
- - Frontend developer
- - Computer Engineering student at ITA (Brazil) and involved (as participant and winner) in many web3 hackathons
+ - Fullstack developer
+ - Engineering student at ITA (Brazil), self-taught developer, director at university blockchain club and competed (and won) in several web2 and web3 hackathons
  - [Github](https://github.com/DanielYuki)
 
