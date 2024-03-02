@@ -31,7 +31,7 @@ export default function HoldingInfo() {
     }, [holdingId]);
 
     return (
-        <div className='flex flex-row'>
+        <div className='flex flex-row mb-12'>
             {(holding && !loading) ?
                 <div className="p-4 w-full text-black md:p-6 lg:p-6 bg-white rounded-xl border border-gray-300 shadow-lg">
                     <PhotoSection pictures={holding.pictures} loading={loading} />

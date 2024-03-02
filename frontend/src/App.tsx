@@ -15,6 +15,7 @@ import { locationData } from "./utils/mock"
 import Projects from "./pages/Projects"
 import Project from "./pages/Project"
 import { Funding } from "./pages/Funding"
+import CreateProject from "./pages/CreateProject"
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
             <Route path="/my-holding/:id/proposal" element={<Proposal />} />
             <Route path="/my-holding/:id/create-proposal" element={<CreateProposal />} />
           </Route>
+          <Route path="/create-project" element={<CreateProject />} />
           <Route path="/property/:id" element={
             <Property
             />
