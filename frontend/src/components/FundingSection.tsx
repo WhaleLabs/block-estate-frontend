@@ -1,13 +1,13 @@
 import { useNavigate } from 'react-router-dom';
-import { MdArrowBackIos, MdAttachMoney } from "react-icons/md";
-import { PropertyType, ReservationType } from '../utils/types';
-import { MdLocationOn, MdDateRange, MdPerson } from 'react-icons/md';
+import { MdArrowBackIos, MdAttachMoney, MdWallet } from "react-icons/md";
+// import { PropertyType, ReservationType } from '../utils/types';
+import { MdLocationOn, MdDateRange, MdPerson, MdAccountBalanceWallet, MdCurrencyBitcoin } from 'react-icons/md';
 import { useState } from 'react';
 import { tokensData, chainsData, fundingData } from '../utils/mock';
 import { HoldingType } from '@/utils/types';
 
-export function FundingSection({ loading, reservation, property, fundingAmount }:
-    { loading: boolean, reservation: ReservationType | null, property: PropertyType | null, fundingAmount: number }) {
+export function FundingSection({ loading, property, yourData, fundingAmount }:
+    { loading: boolean, property: HoldingType | null, yourData: any, fundingAmount: number }) {
 
     const navigator = useNavigate();
 
@@ -49,7 +49,7 @@ export function FundingSection({ loading, reservation, property, fundingAmount }
                 <></>
                 :
                 <>
-                    {(reservation && property) && (
+                    {(property) && (
                         <div className='flex flex-row justify-between items-stretch'>
 
                             {/* Confirm data about the payment */}
@@ -71,8 +71,16 @@ export function FundingSection({ loading, reservation, property, fundingAmount }
                                         <div className="">{reservation.guests} guests</div>
                                     </div> */}
                                     <div className="flex items-center bg-[rgba(255,255,255,0.1)] text-white p-3 rounded-full shadow-sm">
+                                        <MdAccountBalanceWallet className="text-white text-xl mr-2 rounded-full shadow-xl" />
+                                        <div className="">${yourData.raised} <span className='ml-2 text-sm italic'>(You Raised)</span></div>
+                                    </div>
+                                    <div className="flex items-center bg-[rgba(255,255,255,0.1)] text-white p-3 rounded-full shadow-sm">
+                                        <MdCurrencyBitcoin className="text-white text-xl mr-2 rounded-full shadow-xl" />
+                                        <div className="">{yourData.tokens} <span className='ml-2 text-sm italic'>(Your Tokens)</span></div>
+                                    </div>
+                                    <div className="flex items-center bg-[rgba(255,255,255,0.1)] text-white p-3 rounded-full shadow-sm">
                                         <MdAttachMoney className="text-white text-xl mr-2 rounded-full shadow-xl" />
-                                        <div className="">{fundingAmount} <span className='ml-2 text-sm italic'>(total value)</span></div>
+                                        <div className="">${fundingAmount} <span className='ml-2 text-sm italic'>(Value to Raise)</span></div>
                                     </div>
                                 </div>
                             </div>
