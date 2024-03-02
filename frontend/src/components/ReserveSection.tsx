@@ -1,9 +1,24 @@
 import { useNavigate } from 'react-router-dom';
 // import { DatePicker, Space } from 'antd';
 import { ReservationType } from '../utils/types';
+import { useState } from 'react';
+import { cn } from "@/lib/utils"
+import { Calendar } from "@/components/ui/calendar"
+import { Calendar as CalendarIcon } from "lucide-react"
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/ui/popover"
+import { PopoverClose } from "@radix-ui/react-popover"
+import { format } from "date-fns";
+import { Button } from "@/components/ui/button";
 
 export function ReserveSection({id, reservation, loading} : 
     {id: string, reservation: ReservationType | null, loading: boolean}) {
+
+    const [checkin, setCheckin] = useState<Date>();
+    const [checkout, setCheckout] = useState<Date>();
 
     // Calculate total price for stay
     const totalPrice = reservation ? reservation.pricePerNight * reservation.nights : 0;
@@ -34,11 +49,57 @@ export function ReserveSection({id, reservation, loading} :
                         <div className="flex justify-between border p-2 rounded-t-xl">
                             <div className="text-sm text-primary-text px-2">
                                 <div>check-in</div>
-                                <div className="font-semibold">{reservation.checkIn}</div>
+                                <Popover>
+                                    <PopoverTrigger asChild>
+                                        <Button
+                                        variant={"ghost"}
+                                        className={cn(
+                                            "w-full justify-start text-left font-normal",
+                                            !checkin && "text-muted-foreground"
+                                        )}
+                                        >
+                                        <CalendarIcon className="mr-2 h-4 w-4" />
+                                        {checkin ? format(checkin, "PPP") : <span>Pick a checkin date</span>}
+                                        </Button>
+                                    </PopoverTrigger>
+                                    <PopoverContent className="w-auto p-0">
+                                        <PopoverClose>
+                                            <Calendar
+                                            mode="single"
+                                            selected={checkin}
+                                            onSelect={setCheckin}
+                                            initialFocus
+                                            />
+                                        </PopoverClose> 
+                                    </PopoverContent>
+                                </Popover>
                             </div>
                             <div className="text-sm text-primary-text px-2">
                                 <div>checkout</div>
-                                <div className="font-semibold">{reservation.checkOut}</div>
+                                <Popover>
+                                    <PopoverTrigger asChild>
+                                        <Button
+                                        variant={"ghost"}
+                                        className={cn(
+                                            "w-full justify-start text-left font-normal",
+                                            !checkout && "text-muted-foreground"
+                                        )}
+                                        >
+                                        <CalendarIcon className="mr-2 h-4 w-4" />
+                                        {checkout ? format(checkout, "PPP") : <span>Pick a checkout date</span>}
+                                        </Button>
+                                    </PopoverTrigger>
+                                    <PopoverContent className="w-auto p-0">
+                                        <PopoverClose>
+                                            <Calendar
+                                            mode="single"
+                                            selected={checkout}
+                                            onSelect={setCheckout}
+                                            initialFocus
+                                            />
+                                        </PopoverClose> 
+                                    </PopoverContent>
+                                </Popover>
                             </div>
                         </div>
 
