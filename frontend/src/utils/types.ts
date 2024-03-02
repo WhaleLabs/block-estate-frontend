@@ -32,6 +32,12 @@ export type HoldingType = {
     pictures: string[];
 };
 
+export type HoldingHolderType = {
+    name: string;
+    tokens: number;
+    nfts: number;
+};
+
 export type ReservationType = {
     pricePerNight: number;
     nights: number;

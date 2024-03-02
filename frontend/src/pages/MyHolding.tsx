@@ -12,7 +12,7 @@ export default function MyHolding() {
 
     const [holding, setHolding] = useState<HoldingType | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
-    
+
     const [myData, setMyData] = useState<any>(null); // Define myData state
 
     async function fetchHolding() {
@@ -22,7 +22,7 @@ export default function MyHolding() {
             setHolding(holding || null);
 
             // Find the holder whose name matches with your desired name
-            const myHolder = holding?.holders.find(holder => holder.name === "Your Name"); // Replace "Your Name" with your actual name
+            const myHolder = holding?.holders.find(holder => holder.name === "John Doe"); // Replace "Your Name" with your actual name
 
             // Set myData object based on the found holder
             if (myHolder) {
