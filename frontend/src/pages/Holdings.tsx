@@ -23,6 +23,7 @@ export default function Holdings() {
                             title={holding.title}
                             location={holding.location}
                             price={holding.price}
+                            raised={holding.raised}
                             holders={holding.holders}
                             status={holding.status}
                             totalTokens={holding.totalTokens}
