@@ -52,38 +52,7 @@ export const cardData = [
         location: 'Denver, CO, USA',
         price: 100,
         rating: 4.5,
-        pictures: [
-            pic2_1,
-            pic2_2,
-            pic2_3,
-            pic2_4,
-            pic2_5,
-            pic2_6,
-        ]
-    },
-    {
-        id: 2,
-        title: 'House Card 2',
-        image: pic1_0,
-        location: 'Denver, CO, USA',
-        price: 100,
-        rating: 4.5,
-        pictures: [
-            pic2_1,
-            pic2_2,
-            pic2_3,
-            pic2_4,
-            pic2_5,
-            pic2_6,
-        ]
-    },
-    {
-        id: 3,
-        title: 'House Card 3',
-        image: pic1_0,
-        location: 'Denver, CO, USA',
-        price: 100,
-        rating: 4.5,
+        description: 'Experience the beauty of Denver, CO, USA with this charming house card. Located in the heart of the Rocky Mountains, this property offers breathtaking views, outdoor adventures, and a vibrant city life. Whether youre skiing in the winter or hiking in the summer, Denver has something for everyone.',
         pictures: [
             pic2_1,
             pic2_2,
@@ -100,6 +69,7 @@ export const cardData = [
         location: 'Denver, CO, USA',
         price: 100,
         rating: 4.5,
+        description: 'Discover the charm of Denver, CO, USA with this cozy house card. Situated in a peaceful neighborhood, this property offers a relaxing retreat while still being close to the city\'s attractions. Explore nearby parks, restaurants, and cultural landmarks during your stay.',
         pictures: [
             pic2_1,
             pic2_2,
@@ -116,6 +86,7 @@ export const cardData = [
         location: 'Denver, CO, USA',
         price: 100,
         rating: 4.5,
+        description: 'Enjoy the comforts of home in Denver, CO, USA with this stylish house card. Located in a bustling neighborhood, this property offers easy access to shopping, dining, and entertainment options. Relax in modern amenities and explore the vibrant city life during your stay.',
         pictures: [
             pic2_1,
             pic2_2,
@@ -132,22 +103,7 @@ export const cardData = [
         location: 'Ilhabela, SP, Brazil',
         price: 100,
         rating: 4.5,
-        pictures: [
-            pic4_1,
-            pic4_2,
-            pic4_3,
-            pic4_4,
-            pic4_5,
-            pic4_6,
-        ]
-    },
-    {
-        id: 7,
-        title: 'House Card 7',
-        image: pic4_1,
-        location: 'Ilhabela, SP, Brazil',
-        price: 100,
-        rating: 4.5,
+        description: 'Escape to the paradise of Ilhabela, SP, Brazil with this stunning house card. Nestled amidst lush greenery and pristine beaches, this property offers a serene retreat away from the hustle and bustle of city life. Immerse yourself in nature, relax on beautiful shores, and experience the magic of Ilhabela.',
         pictures: [
             pic4_1,
             pic4_2,
@@ -164,6 +120,7 @@ export const cardData = [
         location: 'Ilhabela, SP, Brazil',
         price: 100,
         rating: 4.5,
+        description: 'Indulge in luxury at Ilhabela, SP, Brazil with this exquisite house card. Surrounded by tropical beauty and crystal-clear waters, this property offers a luxurious escape for discerning travelers. Experience world-class amenities, breathtaking views, and unparalleled hospitality during your stay.',
         pictures: [
             pic4_1,
             pic4_2,
@@ -180,6 +137,7 @@ export const cardData = [
         location: 'New York City, NY, USA',
         price: 100,
         rating: 4.5,
+        description: 'Immerse yourself in the excitement of New York City, NY, USA with this luxurious house card. Located in the heart of Manhattan, this property offers easy access to world-famous attractions, shopping districts, and entertainment venues. Experience the energy of the city that never sleeps during your stay.',
         pictures: [
             pic3_1,
             pic3_2,
@@ -189,23 +147,8 @@ export const cardData = [
             pic3_6,
         ]
     },
-    {
-        id: 10,
-        title: 'House Card 10',
-        image: pic3_1,
-        location: 'New York City, NY, USA',
-        price: 100,
-        rating: 4.5,
-        pictures: [
-            pic3_1,
-            pic3_2,
-            pic3_3,
-            pic3_4,
-            pic3_5,
-            pic3_6,
-        ]
-    },
-]
+];
+
 
 
 export const reservationData = [
@@ -343,8 +286,9 @@ export const reservationData = [
 
 export const tripData = [
     {
+        id: 1,
         title: 'Trip 1',
-        image: imovel1,
+        image: pic1_0,
         location: 'Denver, CO, USA',
         price: 100,
         startDate: '2024-03-01',
@@ -352,58 +296,24 @@ export const tripData = [
         status: 'Upcoming'
     },
     {
+        id: 2,
         title: 'Trip 2',
-        image: imovel1,
-        location: 'Denver, CO, USA',
+        image: pic2_1,
+        location: 'New York City, NY, USA',
         price: 120,
         startDate: '2024-04-10',
         endDate: '2024-04-15',
         status: 'Completed'
     },
     {
+        id: 3,
         title: 'Trip 3',
-        image: imovel1,
-        location: 'New York City, NY, USA',
-        price: 150,
-        startDate: '2024-05-20',
-        endDate: '2024-05-25',
-        status: 'Upcoming'
-    },
-    {
-        title: 'Trip 4',
-        image: imovel1,
-        location: 'Los Angeles, CA, USA',
+        image: pic4_1,
+        location: 'Chicago, IL, USA',
         price: 90,
         startDate: '2024-06-15',
         endDate: '2024-06-20',
         status: 'Completed'
-    },
-    {
-        title: 'Trip 5',
-        image: imovel1,
-        location: 'Chicago, IL, USA',
-        price: 110,
-        startDate: '2024-07-05',
-        endDate: '2024-07-10',
-        status: 'Upcoming'
-    },
-    {
-        title: 'Trip 6',
-        image: imovel1,
-        location: 'San Francisco, CA, USA',
-        price: 130,
-        startDate: '2024-08-12',
-        endDate: '2024-08-17',
-        status: 'Completed'
-    },
-    {
-        title: 'Trip 7',
-        image: imovel1,
-        location: 'Seattle, WA, USA',
-        price: 95,
-        startDate: '2024-09-25',
-        endDate: '2024-09-30',
-        status: 'Upcoming'
     },
 ];
 
@@ -416,11 +326,7 @@ export const fundingData = [
         price: 1000000,
         raised: 800000,
         status: 'Available', //Available, Reserved, Funded
-        // startDate: '2024-03-01',
-        // endDate: '2024-03-05',
-        // rating: 4.5,
-        // tokens: 100,
-        // numNFTs: 5,
+        description: 'Explore the vibrant city of New York City, NY, USA with this luxurious holding. Located in the heart of the bustling city, this property offers easy access to iconic landmarks such as Times Square, Central Park, and the Statue of Liberty. Indulge in the rich culture, diverse cuisine, and endless entertainment options that New York City has to offer.',
         holders: [
             { name: 'John Doe',raised:3000, tokens: 50, nfts: 3 },
             { name: 'Alice Smith',raised:39000 , tokens: 30, nfts: 2 },
@@ -443,6 +349,7 @@ export const fundingData = [
         price: 1200000,
         raised: 100000,
         status: 'Funded',
+        description: 'Immerse yourself in the sunny vibes of Los Angeles, CA, USA with this exquisite holding. Nestled in the heart of Hollywood, this property offers stunning views of the iconic Hollywood Sign, Griffith Observatory, and the Pacific Ocean. Experience the glamour of celebrity life, explore world-class attractions, and relax on beautiful beaches.',
         holders: [
             { name: 'Michael Johnson',raised:3000, tokens: 60, nfts: 4 },
             { name: 'Sophia Brown',raised:3000, tokens: 40, nfts: 2 },
@@ -465,6 +372,7 @@ export const fundingData = [
         price: 900000,
         raised: 700000,
         status: 'Funded',
+        description: 'Discover the charm of the Windy City with this elegant holding in Chicago, IL, USA. Situated in the heart of downtown Chicago, this property offers breathtaking views of the iconic skyline, Millennium Park, and Lake Michigan. Delight in world-renowned architecture, renowned cuisine, and vibrant cultural attractions.',
         holders: [
             { name: 'Emma Wilson',raised:3000, tokens: 40, nfts: 2 },
             { name: 'James Miller',raised:3000, tokens: 30, nfts: 1 },
@@ -480,7 +388,6 @@ export const fundingData = [
             pic4_6,
         ]
     }
-    
 ];
 
 

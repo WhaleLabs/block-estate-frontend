@@ -22,6 +22,7 @@ export default function Holdings() {
                             id={holding.id}
                             title={holding.title}
                             location={holding.location}
+                            description={holding.description}
                             price={holding.price}
                             raised={holding.raised}
                             holders={holding.holders}
