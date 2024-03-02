@@ -12,7 +12,7 @@ _
 ## Overall Project Introduction
 - *Project Background:*
 
-   > ""
+   > "We love the tokenization topic and we saw in the ERC 404 a unique way to unity the token properties and nft properties, such as receive earnings (like rent value) and own roles (like property manager) and then we came with the idea to use ERC 6551 to ensure safety in the transactions. In this way, we bring a very stable and good market, real estate, to implement a new decentralized platform for real estate"
 
 - *Project Introduction:*
 
@@ -54,13 +54,13 @@ The use of ERC 404 can support the solution in this way:
 
 [Demo Link]((https://block-estate-24.netlify.app/))
 
-[Demo Video](https://youtu.be/)
+[Demo Video](https://youtu.be/c9ABWxw0NMA)
 
 [Presentation Link](https://www.canva.com/design/DAF-UOG3CTI/xsD5543tz1ZZ0fL8KqCybA/edit?utm_content=DAF-UOG3CTI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 - *Technical Architecture:*
 
-![Project Photo](frontend/src/assets/BusinessFlow.png)
+![Project Photo](frontend/src/assets/Architecture.png)
 
 - *Business Flow:*
 
@@ -72,14 +72,51 @@ The use of ERC 404 can support the solution in this way:
 
 _
 
+## Items Completed For the Hackathon
+
+  - *Blockchain Side:*
+      - [ProjectAccount](https://github.com/WhaleLabs/block-estate-contracts/blob/master/src/ProjectAccount.sol): It's the contract that creates the account for the deposits, managing the transactions between stakeholders and where it is implemented the ERC 404 and the ERC 6551.
+      - [Rentals](https://github.com/WhaleLabs/block-estate-contracts/blob/master/src/Rentals.sol): It's the address that keeps the implementation of the rent value interaction.
+      - [WhaleFinance](https://github.com/WhaleLabs/block-estate-contracts/blob/master/src/BlockEstate.sol): It's the main contract, which implements the creation of the project (property) starting the crowdfunding.
+
+  - *Client Side:*
+    - *Web Owner Features:*
+      - Focused in the funding and management of properties.
+      - Create Project ('/create-project' route)
+      - Funding Project (after choose one in the '/projects' route)
+      - Manage holdings and create proposals ('/my-holding' route)
+    - *Web Renter Features:*
+      - Focused in the rent of properties.
+      - Rent a Property (after choose one in the '/' route)
+      - See Trips upcoming or past ('/trips' route)
+     
+   For better understanding of the routes and features: [Frontend App](frontend/src/App.tsx)
+
 ### Addresses
 
-  - Token Addresses:
-    -  
+- XDC:
+   - BlockEstate deployed at:  0x69801C169647Ad125707Dd40096D4EDC20Bb521a
+   - Payment Token deployed at:  0x536527976E98E253B424a3655E695D144E343341
+   - ERC6551Registry deployed at:  0x76D11E63a7b2Ec1C7A4D4Fc88f1D74FC8b98d651
+   - Rentals implementation deployed at:  0x34Da10E3a5d15e27896445b58b932E2F5D98e426
+   - Beacon deployed at:  0xc77e76e8400A9436A7ce4ebCFA18dF76Ae60ED01
+   - ProjectAccount implementation deployed at:  0xAF4Bd9d6E474afa59655EFe171e02e4670718f09
 
-
-
-
+- Linea:
+   - BlockEstate deployed at:  0xBd6ed8BAF6904a97c3125f1b6920f268fF39Aaa2
+   - Payment Token deployed at:  0xb0744daaf6E84855C3551CDfbCec5892A8892B86
+   - ERC6551Registry deployed at:  0x9C080703256BDF9Ea1b485aE72f13E31f74C558b
+   - Rentals implementation deployed at:  0x0944830916CECb637613c9Fd0e8F6C21ccFFB4eF
+   - Beacon deployed at:  0x0fee4c356DEeF6567E95b6394420583CA1D1fEEa
+   - ProjectAccount implementation deployed at:  0x0120aD0f0a676877fA36295c763eCB092a5a1E37
+ 
+- BASE Sepolia Testnet:
+   - BlockEstate deployed at:  0xBd6ed8BAF6904a97c3125f1b6920f268fF39Aaa2
+   - Payment Token deployed at:  0xb0744daaf6E84855C3551CDfbCec5892A8892B86
+   - ERC6551Registry deployed at:  0x9C080703256BDF9Ea1b485aE72f13E31f74C558b
+   - Rentals implementation deployed at:  0x0944830916CECb637613c9Fd0e8F6C21ccFFB4eF
+   - Beacon deployed at:  0x0fee4c356DEeF6567E95b6394420583CA1D1fEEa
+   - ProjectAccount implementation deployed at:  0x0120aD0f0a676877fA36295c763eCB092a5a1E37
 _
 
 ## Team Member Information
@@ -97,4 +134,7 @@ _
  - [Github](https://github.com/luiz-lvj)
 
 *Daniel Yuki*
+ - Fullstack developer
+ - Engineering student at ITA (Brazil), self-taught developer, director at university blockchain club and competed (and won) in several web2 and web3 hackathons
+ - [Github](https://github.com/DanielYuki)
 
