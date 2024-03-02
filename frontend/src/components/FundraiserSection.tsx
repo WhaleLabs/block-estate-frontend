@@ -19,6 +19,9 @@ export default function FundraiserSection({ id, price, raised, totalTokens, hold
 
     const numHolders = (holders as any[]).length;
 
+    // PROJECT WALLET ADDRESS
+    const [walletAddress, setWalletAddress] = useState<string | null>(null);
+
     const yourName = "John Doe"; // your identity
 
     const [yourData, setYourData] = useState<any>(null);
@@ -59,9 +62,22 @@ export default function FundraiserSection({ id, price, raised, totalTokens, hold
                 </div>
             </div>
             <div className="w-full flex flex-row items-center justify-between mt-4">
-                <div className="flex flex-row justify-start items-center w-[50%]">
+                <div className="flex flex-row justify-start items-start w-[75%]">
                     <DialogDemo navigator={navigator} handleFund={handleFund} fundingAmount={fundingAmount} id={id} handleFundingAmountChange={handleFundingAmountChange} />
-                    <p className="text-l ml-4 text-gray-500">You Raised: {yourData?.raised}</p>
+                    <div className="ml-4">
+                        <div>
+                            {walletAddress ? (
+                                <a href={`https://blockscan.com/address/${walletAddress}`} target="_blank" rel="noopener noreferrer">
+                                    <p>Project Wallet: {walletAddress ? `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}` : '...'}</p>
+                                </a>
+                            ) : (
+                                <>
+                                    <p>Project Wallet: Error retrieving wallet address</p>
+                                </>
+                            )}
+                        </div>
+                        <p className="text-l text-gray-500">You Raised: {yourData?.raised ?? "You Haven't Raised in this property yet"}</p>
+                    </div>
                 </div>
                 <p className="text-l text-gray-500">Campaign {status}</p>
             </div>
@@ -69,12 +85,12 @@ export default function FundraiserSection({ id, price, raised, totalTokens, hold
     )
 }
 
-export function DialogDemo({ navigator, id,handleFund, fundingAmount, handleFundingAmountChange }: { navigator: any, id: string, fundingAmount: number,handleFund:any, handleFundingAmountChange: (event: React.ChangeEvent<HTMLInputElement>) => void }) {
+export function DialogDemo({ navigator, id, handleFund, fundingAmount, handleFundingAmountChange }: { navigator: any, id: string, fundingAmount: number, handleFund: any, handleFundingAmountChange: (event: React.ChangeEvent<HTMLInputElement>) => void }) {
     return (
         <Dialog>
             <DialogTrigger asChild>
                 <button
-                    className="w-[35%] bg-primary-600 text-white text-lg font-semibold py-2 px-4 rounded-lg mb-2 hover:bg-primary-700 transition-colors"
+                    className="w-[25%] bg-primary-600 text-white text-lg font-semibold py-2 px-4 rounded-lg mb-2 hover:bg-primary-700 transition-colors"
                 >
                     Fund
                 </button>
