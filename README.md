@@ -32,9 +32,8 @@ _
 
 - *Project Demo and Presentation:*
 
-[Demo Link](https://)
+[Demo Link]((https://block-estate-24.netlify.app/))
 
-[App Link](https:/)
 
 [Demo Video](https://youtu.be/)
 
