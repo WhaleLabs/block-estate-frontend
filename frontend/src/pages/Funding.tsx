@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams, useLocation } from 'react-router-dom'; // Import useLocation
-import { PropertyType, ReservationType } from '../utils/types';
-import { cardData, reservationData } from '../utils/mock';
+// import { HoldingType, ReservationType } from '../utils/types';
+import { HoldingType } from '@/utils/types';
 import { FundingSection } from '@/components/FundingSection';
+import { fundingData } from '../utils/mock';
 
 export function Funding() {
 
@@ -10,43 +11,29 @@ export function Funding() {
     const propertyId = params.id || '';
 
     const navigator = useNavigate();
-    const location = useLocation(); // Use useLocation hook to access location object
+    const location = useLocation();
 
-    const [property, setProperty] = useState<PropertyType | null>(null);
-    const [reservation, setReservation] = useState<ReservationType | null>(null);
+    const [property, setProperty] = useState<HoldingType | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
-    const [fundingAmount, setFundingAmount] = useState<number>(0); // State to store funding amount
+    const [fundingAmount, setFundingAmount] = useState<number>(0);
+    const [yourData, setYourData] = useState<HoldingType | null>(null);
 
     useEffect(() => {
-        // Extract funding amount from location object
         const searchParams = new URLSearchParams(location.search);
         const amount = parseFloat(searchParams.get('amount') || '0');
         setFundingAmount(amount);
-    }, [location.search]); // Update funding amount when location.search changes
-
-    async function fetchProperty() {
-        try {
-            // fetch the cardData by the id here and then set using setProperty
-            const property = cardData.find(property => property.id === parseInt(propertyId));
-            const reservation = reservationData.find(reservation => reservation.id === parseInt(propertyId));
-            setProperty(property || null);
-            setReservation(reservation?.reserveData ?? null);
-        } catch (error) {
-            console.error("There was an error fetching the data:", error);
-        } finally {
-            setLoading(false);
-        }
-    }
+    }, [location.search]);
 
     useEffect(() => {
-        fetchProperty();
+        const selectedProperty = fundingData.find((property) => property.id === parseInt(propertyId));
+        setProperty(selectedProperty || null);
+        const selectedHolder = selectedProperty?.holders.find((holder) => holder.name === 'John Doe');
+        setYourData(selectedHolder as any || null);
+        setLoading(false);
     }, [propertyId]);
 
     return (
         <div className='relative w-[100vw] h-[100vh] text-primary-text overflow-hidden'>
-
-            {/* Background image */}
-
             <div className="absolute inset-0 z-0">
                 {property && !loading && (
                     <img
@@ -56,11 +43,10 @@ export function Funding() {
                     />
                 )}
             </div>
-
             <div className="relative z-10 mt-16 p-6 w-full md:p-12 md:px-30 lg:py-12 lg:px-48 text-primary-text">
-                {(property && !loading) &&
-                    <FundingSection loading={loading} reservation={reservation} property={property} fundingAmount={fundingAmount} /> // Pass fundingAmount as prop
-                }
+                {property && !loading && (
+                    <FundingSection loading={loading} yourData={yourData} property={property} fundingAmount={fundingAmount} />
+                )}
             </div>
         </div>
     );
