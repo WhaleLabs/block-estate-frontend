@@ -4,7 +4,7 @@ import { menuOptions } from '../utils/data';
 import SearchBar from './SearchBar';
 import { LocationType } from '../utils/types';
 import { useScrollDirection } from '@/hooks/use-scroll-direction';
-import logo from '../../public/logo.png';
+import logo from '/logo.png';
 
 export function AppHeader({ filteredLocation, setFilteredLocation }: { filteredLocation: LocationType[], setFilteredLocation: React.Dispatch<React.SetStateAction<LocationType[]>> }) {
 
