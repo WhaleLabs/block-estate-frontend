@@ -31,6 +31,9 @@ export type HoldingType = {
     holders: object[];
     totalTokens: number;
     pictures: string[];
+    account?: string;
+    invested?: number;
+    chainId?: number;
 };
 
 export type HoldingHolderType = {

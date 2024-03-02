@@ -13,14 +13,16 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { scanUrls } from "@/utils/addresses";
+import { ethers } from "ethers";
 
-export default function FundraiserSection({ id, price, raised, totalTokens, holders, status, loading }:
-    { id: string, price: number, raised: number, totalTokens: number, holders: object, status: string, loading: boolean }) {
+export default function FundraiserSection({ id, price, raised, totalTokens, holders, status, loading, walletAddress , invested, chainId }:
+    { id: string, price: number, raised: number, totalTokens: number, holders: object, status: string, loading: boolean, 
+        walletAddress: string, invested: number, chainId: number}) {
 
     const numHolders = (holders as any[]).length;
 
     // PROJECT WALLET ADDRESS
-    const [walletAddress, setWalletAddress] = useState<string | null>(null);
 
     const yourName = "John Doe"; // your identity
 
@@ -67,16 +69,16 @@ export default function FundraiserSection({ id, price, raised, totalTokens, hold
                     <div className="ml-4">
                         <div>
                             {walletAddress ? (
-                                <a href={`https://blockscan.com/address/${walletAddress}`} target="_blank" rel="noopener noreferrer">
-                                    <p>Project Wallet: {walletAddress ? `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}` : '...'}</p>
+                                <a href={`${scanUrls[chainId]}/address/${walletAddress}`} target="_blank" rel="noopener noreferrer">
+                                    <p>Project Account: {walletAddress ? `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}` : '...'}</p>
                                 </a>
                             ) : (
                                 <>
-                                    <p>Project Wallet: Error retrieving wallet address</p>
+                                    <p>Project Account: Error retrieving wallet address</p>
                                 </>
                             )}
                         </div>
-                        <p className="text-l text-gray-500">You Raised: {yourData?.raised ?? "You Haven't Raised in this property yet"}</p>
+                        <p className="text-l text-gray-500">You Raised: {invested ?? "You Haven't Raised in this property yet"}</p>
                     </div>
                 </div>
                 <p className="text-l text-gray-500">Campaign {status}</p>

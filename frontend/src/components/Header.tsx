@@ -14,7 +14,6 @@ export function AppHeader({filteredLocation, setFilteredLocation, connectMetamas
     const isHidden = (scrollDirection === 'down');
 
     const sdk = useSDK();
-    console.log('sdk', sdk);
 
     const connectAndSign = async () => {
         console.log('connectAndSign');
@@ -27,7 +26,6 @@ export function AppHeader({filteredLocation, setFilteredLocation, connectMetamas
         // }
     };
 
-    console.log(scrollDirection);
 
     const translateClass = isHidden ? '-translate-y-full' : 'translate-y-0';
 

@@ -82,6 +82,8 @@ function App() {
           }>
             <Route path="/" element={
               <Home 
+                account={account}
+                signer={signer}
                 filteredLocation={filteredLocation}
               />
             } />
@@ -110,10 +112,13 @@ function App() {
             } />
             <Route path="/projects/:id" element={
               <Project
+                signer={signer}
               />
             } />
             <Route path="/funding/:id" element={
               <Funding
+                account={account}
+                signer={signer}
               />
             } />
           </Route>
@@ -135,10 +140,13 @@ function App() {
           } />
           <Route path="/projects/:id" element={
             <Project
+              signer={signer}
             />
           } />
           <Route path="/funding/:id" element={
             <Funding
+              account={account}
+              signer={signer}
             />
           } />
       </Routes>

@@ -4,13 +4,13 @@ import { useNavigate, useParams, useLocation } from 'react-router-dom'; // Impor
 import { HoldingType } from '@/utils/types';
 import { FundingSection } from '@/components/FundingSection';
 import { fundingData } from '../utils/mock';
+import { ethers } from 'ethers';
 
-export function Funding() {
+export function Funding({account, signer}: {account: string, signer: ethers.providers.JsonRpcSigner | null}) {
 
     const params = useParams();
     const propertyId = params.id || '';
 
-    const navigator = useNavigate();
     const location = useLocation();
 
     const [property, setProperty] = useState<HoldingType | null>(null);
@@ -45,7 +45,12 @@ export function Funding() {
             </div>
             <div className="relative z-10 mt-16 p-6 w-full md:p-12 md:px-30 lg:py-12 lg:px-48 text-primary-text">
                 {property && !loading && (
-                    <FundingSection loading={loading} yourData={yourData} property={property} fundingAmount={fundingAmount} />
+                    <FundingSection 
+                    loading={loading} 
+                    property={property} 
+                    fundingAmount={fundingAmount} 
+                    account={account}
+                    signer={signer}/>
                 )}
             </div>
         </div>

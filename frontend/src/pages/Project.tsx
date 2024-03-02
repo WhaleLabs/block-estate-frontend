@@ -11,8 +11,13 @@ import { FundSection } from "@/components/FundSection";
 import HoldersList from "@/components/HoldersList";
 import FundraiserSection from "@/components/FundraiserSection";
 import { DescriptionProject } from "@/components/DescriptionProject";
+import { ethers } from "ethers";
+import { contractAddresses } from "@/utils/addresses";
+import { BlockEstateABI } from "@/contracts/BlockEstate";
+import { ERC20ABI } from "@/contracts/ERC20";
+import { ProjectAccountABI } from "@/contracts/ProjectAccount";
 
-export default function Project() {
+export default function Project({signer} : {signer: ethers.providers.JsonRpcSigner | null}) {
 
     const params = useParams();
     const propertyId = params.id || '';
@@ -29,7 +34,30 @@ export default function Project() {
             // const reservation = reservationData.find(reservation => reservation.id === parseInt(propertyId));
             // setProperty(property || null); 
             // setReservation(reservation?.reserveData ?? null);
-            const property = fundingData.find(property => property.id === parseInt(propertyId));
+
+            const chainId = await signer?.getChainId() as number;
+            const BlockEstateContract = new ethers.Contract(contractAddresses[chainId]["BlockEstate"], BlockEstateABI, signer as ethers.providers.JsonRpcSigner);
+            const PaymentTokenContract = new ethers.Contract(contractAddresses[chainId]["PaymentToken"], ERC20ABI, signer as ethers.providers.JsonRpcSigner);
+            
+           
+            const projectAccount = await BlockEstateContract.functions.projectsAccounts(propertyId);
+            const projectAccountContract = new ethers.Contract(projectAccount[0], ProjectAccountABI, signer as ethers.providers.JsonRpcSigner);
+            const amountToRaise = await projectAccountContract.functions.totalAmountToRaise();
+            const name = await projectAccountContract.functions.name();
+
+            const amountRaised = await PaymentTokenContract.functions.balanceOf(projectAccount[0]);
+
+            const balanceOfTokens = await projectAccountContract.functions.erc20BalanceOf(signer?.getAddress());
+            const amountTokens = ethers.utils.formatEther(balanceOfTokens[0]._hex);
+
+
+            let property = fundingData.find(property => property.id === parseInt(String(Number(propertyId) == 0 ? 1 : propertyId))) as any;
+            property.title = name[0];
+            property.price = ethers.utils.formatEther(amountToRaise[0]._hex);
+            property.raised = ethers.utils.formatEther(amountRaised[0]._hex);
+            property.account = projectAccount[0];
+            property.invested = amountTokens;
+            property.chainId = chainId;
             setProperty(property || null);
         } catch (error) {
             console.error("There was an error fetching the data:", error);
@@ -77,7 +105,10 @@ export default function Project() {
 
                 <div className="flex flex-col justify-between pt-6 md:flex-row md:space-x-6">
                     <div className="w-[80%]">
-                        <FundraiserSection id={propertyId} price={property.price} raised={property.raised} totalTokens={property.totalTokens} status={property.status} holders={property.holders} loading={loading} />
+                        <FundraiserSection id={propertyId} price={property.price} raised={property.raised} 
+                            totalTokens={property.totalTokens} status={property.status} 
+                            holders={property.holders} loading={loading} walletAddress={property.account as string} 
+                            invested={property.invested as number} chainId={property.chainId as number}/>
                         <DescriptionProject loading={loading}/>
                     </div>
                     {/* separation bar */}
