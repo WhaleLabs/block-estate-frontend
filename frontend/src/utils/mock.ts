@@ -414,6 +414,7 @@ export const fundingData = [
         // image: imovel1,
         location: 'New York City, NY, USA',
         price: 1000000,
+        raised: 800000,
         status: 'Available', //Available, Reserved, Funded
         // startDate: '2024-03-01',
         // endDate: '2024-03-05',
@@ -421,9 +422,9 @@ export const fundingData = [
         // tokens: 100,
         // numNFTs: 5,
         holders: [
-            { name: 'John Doe', tokens: 50, nfts: 3 },
-            { name: 'Alice Smith', tokens: 30, nfts: 2 },
-            { name: 'Emily Johnson', tokens: 20, nfts: 0 }
+            { name: 'John Doe',raised:3000, tokens: 50, nfts: 3 },
+            { name: 'Alice Smith',raised:39000 , tokens: 30, nfts: 2 },
+            { name: 'Emily Johnson',raised:9000, tokens: 20, nfts: 0 }
         ],
         totalTokens: 500,
         pictures: [
@@ -440,11 +441,12 @@ export const fundingData = [
         title: 'Holding 2',
         location: 'Los Angeles, CA, USA',
         price: 1200000,
+        raised: 100000,
         status: 'Funded',
         holders: [
-            { name: 'Michael Johnson', tokens: 60, nfts: 4 },
-            { name: 'Sophia Brown', tokens: 40, nfts: 2 },
-            { name: 'William Davis', tokens: 20, nfts: 1 }
+            { name: 'Michael Johnson',raised:3000, tokens: 60, nfts: 4 },
+            { name: 'Sophia Brown',raised:3000, tokens: 40, nfts: 2 },
+            { name: 'William Davis',raised:3000, tokens: 20, nfts: 1 }
         ],
         totalTokens: 600,
         pictures: [
@@ -461,11 +463,12 @@ export const fundingData = [
         title: 'Holding 3',
         location: 'Chicago, IL, USA',
         price: 900000,
+        raised: 700000,
         status: 'Funded',
         holders: [
-            { name: 'Emma Wilson', tokens: 40, nfts: 2 },
-            { name: 'James Miller', tokens: 30, nfts: 1 },
-            { name: 'Olivia Taylor', tokens: 10, nfts: 0 }
+            { name: 'Emma Wilson',raised:3000, tokens: 40, nfts: 2 },
+            { name: 'James Miller',raised:3000, tokens: 30, nfts: 1 },
+            { name: 'Olivia Taylor',raised:3000, tokens: 10, nfts: 0 }
         ],
         totalTokens: 400,
         pictures: [
