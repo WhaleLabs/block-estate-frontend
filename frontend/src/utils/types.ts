@@ -21,6 +21,7 @@ export type HoldingType = {
     // image: string;
     location: string;
     price: number;
+    raised: number;
     // startDate: string;
     // endDate: string;
     status: string;
@@ -35,6 +36,7 @@ export type HoldingType = {
 export type HoldingHolderType = {
     name: string;
     tokens: number;
+    raised: number;
     nfts: number;
 };
 

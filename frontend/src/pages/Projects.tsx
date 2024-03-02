@@ -1,9 +1,8 @@
 // import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
-import { Card } from '../components/Card';
-import { cardData } from '../utils/mock';
+import { fundingData } from '../utils/mock';
 import { LocationType } from '../utils/types';
-import { CardProject } from '@/components/CardProject';
+import { FundingCard } from '@/components/FundingCard';
 
 export default function Projects({filteredLocation} : {filteredLocation: LocationType[]}) {
 
@@ -18,17 +17,20 @@ export default function Projects({filteredLocation} : {filteredLocation: Locatio
             <div className="p-6 w-full md:p-12 lg:p-12">  
                 {/* <button className="self-center text-primary-text bg-red-100 p-2 m-6 hover:bg-red-400" onClick={() => setLoading(true)}>TEST LOADING</button> */}
                 <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4'>
-                    {cardData
+                    {fundingData
                         .filter(card => filteredLocation.some(location => location.label === card.location))
                         .map((card, index) => {
-                        return <CardProject
+                        return <FundingCard
                                     key={index} 
                                     id={card.id}
                                     title={card.title} 
                                     pictures={card.pictures} 
                                     location={card.location} 
                                     price={card.price} 
-                                    rating={card.rating}
+                                    raised={card.raised}
+                                    holders={card.holders}
+                                    status={card.status}
+                                    totalTokens={card.totalTokens}
                                     loading={loading}
                                 />
                     })}
