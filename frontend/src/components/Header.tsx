@@ -4,12 +4,28 @@ import { menuOptions } from '../utils/data';
 import SearchBar from './SearchBar';
 import { LocationType } from '../utils/types';
 import { useScrollDirection } from '@/hooks/use-scroll-direction';
-import { MetaMaskButton } from '@metamask/sdk-react-ui';
+import { useSDK } from '@metamask/sdk-react';
 
-export function AppHeader({filteredLocation, setFilteredLocation} : {filteredLocation: LocationType[], setFilteredLocation: React.Dispatch<React.SetStateAction<LocationType[]>>}) {
+export function AppHeader({filteredLocation, setFilteredLocation, connectMetamask, account} : 
+    {filteredLocation: LocationType[], setFilteredLocation: React.Dispatch<React.SetStateAction<LocationType[]>>, 
+        connectMetamask: () => void, account: string}) {
 
     const scrollDirection = useScrollDirection(50);
     const isHidden = (scrollDirection === 'down');
+
+    const sdk = useSDK();
+    console.log('sdk', sdk);
+
+    const connectAndSign = async () => {
+        console.log('connectAndSign');
+        // try {
+        //     const signResult = await sdk?.connectAndSign({
+        //         msg: "By signging this message, you agree to the terms and conditions of the dapp.",
+        //     });
+        // } catch (err) {
+        //     console.warn(`failed to connect..`, err);
+        // }
+    };
 
     console.log(scrollDirection);
 
@@ -95,13 +111,16 @@ export function AppHeader({filteredLocation, setFilteredLocation} : {filteredLoc
                     </div>
 
                     {/* Connect Button */}
-                    {/* <button 
+                    <button 
                         className="px-4 py-2 my-2 bg-primary-500 text-white rounded-lg shadow focus:outline-none hover:bg-primary-600"
+                        onClick={connectMetamask}
                     >
-                        Connect Wallet
-                    </button> */}
+                        {account == ""? "Connect Wallet": "Connected: "+  account[0] + account[1] + account[2] + account[3] + "..." + account[account.length-3]  + account[account.length-2] + account[account.length-1]}
+                    </button>
 
-                    <MetaMaskButton theme={'dark'} color={'blue'}  >Connect Wallet</MetaMaskButton>
+                    {/* <MetaMaskButton 
+                    onClick={() => sdk?.connect()}
+                    theme={'dark'} color={'blue'}  >Connect Wallet</MetaMaskButton> */}
                 </div>
             </div>
         </header>

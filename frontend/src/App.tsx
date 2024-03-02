@@ -15,15 +15,48 @@ import { locationData } from "./utils/mock"
 import Projects from "./pages/Projects"
 import Project from "./pages/Project"
 import { Funding } from "./pages/Funding"
+import { ethers } from "ethers";
 
 import { MetaMaskUIProvider, useSDK } from "@metamask/sdk-react-ui";
 
 function App() {
 
   const [filteredLocation, setFilteredLocation] = useState(locationData);
+  const [account, setAccount] = useState("");
+  const [provider, setProvider] = useState<ethers.providers.Web3Provider | null>(null);
+  const [signer, setSigner] = useState<ethers.providers.JsonRpcSigner | null>(null);
 
-  const {ready} = useSDK();
-  console.log("ready", ready);
+  const { sdk } = useSDK();
+
+    const connectMetamask = async () => {
+      if(!window.ethereum){
+        alert("You need metamask!");
+    } else{
+        try{
+            //@ts-ignore
+            const web3Provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+            
+            const accounts = await web3Provider.send('eth_requestAccounts' ,[]);
+            const address = accounts[0];
+            const web3Signer = web3Provider.getSigner(address);
+
+            setAccount(address);
+            setProvider(web3Provider);
+            setSigner(web3Signer);
+            
+            return {
+                web3Provider,
+                web3Signer,
+                address
+            }
+
+        } catch(err){
+            console.log(err);
+            return null;
+        }
+    }
+    };
+
 
   return (
     <MetaMaskUIProvider
@@ -31,7 +64,9 @@ function App() {
         dappMetadata: {
           name: "BlockEstate",
           url: window.location.href,
-        }
+        },
+        checkInstallationImmediately: false
+        
     }}
     >
       <BrowserRouter>
@@ -40,6 +75,8 @@ function App() {
             <Layout
               filteredLocation={filteredLocation}
               setFilteredLocation={setFilteredLocation}
+              connectMetamask={connectMetamask}
+              account={account}
             />
           }>
             <Route path="/" element={
