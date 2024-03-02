@@ -9,13 +9,13 @@ import { contractAddresses } from '@/utils/addresses';
 
 
 export default function Projects({filteredLocation, account, signer} : 
-    {filteredLocation: LocationType[], account: string, signer: ethers.providers.JsonRpcSigner}) {
+    {filteredLocation: LocationType[], account: string, signer: ethers.providers.JsonRpcSigner | null}) {
 
     const getFundgingData = async () => {
         try{
             console.log("account", account);
-            const chainId = await signer.getChainId();
-            const BlockEstateContract = new ethers.Contract(contractAddresses[chainId]["BlockEstate"], BlockEstateABI, signer);
+            const chainId = await signer?.getChainId() as number;
+            const BlockEstateContract = new ethers.Contract(contractAddresses[chainId]["BlockEstate"], BlockEstateABI, signer as ethers.providers.JsonRpcSigner);
             const numberOfProjectsBigNumber = await BlockEstateContract.functions.projectsCounter();
             const numberOfProjects = Number(ethers.utils.formatUnits(numberOfProjectsBigNumber[0]._hex, 0));
             await Promise.all

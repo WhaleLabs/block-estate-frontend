@@ -3,4 +3,5 @@ export const menuOptions = [
     { name: 'Trips', link: '/trips' },
     { name: 'My Holdings', link: '/holdings' },
     { name: 'Projects', link: '/projects' },
+    { name: 'Create Project', link: '/create-project' },
 ];

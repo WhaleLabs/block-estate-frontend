@@ -18,6 +18,7 @@ import { Funding } from "./pages/Funding"
 import { ethers } from "ethers";
 
 import { MetaMaskUIProvider, useSDK } from "@metamask/sdk-react-ui";
+import CreateProject from "./pages/CreateProject"
 
 function App() {
 
@@ -116,8 +117,32 @@ function App() {
               />
             } />
           </Route>
-        </Routes>
-      </BrowserRouter>
+          <Route path="/create-project" element={<CreateProject />} />
+          <Route path="/property/:id" element={
+            <Property
+            />
+          }/>
+          <Route path="/checkout/:id" element={
+            <Payment
+            />
+          }/>
+          <Route path="/projects" element={
+            <Projects
+              account={account}
+              signer={signer}
+              filteredLocation={filteredLocation}
+            />
+          } />
+          <Route path="/projects/:id" element={
+            <Project
+            />
+          } />
+          <Route path="/funding/:id" element={
+            <Funding
+            />
+          } />
+      </Routes>
+    </BrowserRouter>
     </MetaMaskUIProvider>
   )
 }
