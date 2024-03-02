@@ -3,8 +3,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { PropertyType, ReservationType } from '../utils/types';
 import { cardData, reservationData } from '../utils/mock';
 import { PaymentSection } from '../components/PaymentSection';
+import { ethers } from 'ethers';
 
-export function Payment() {
+export function Payment({ account, signer }: { account: string, signer: ethers.providers.JsonRpcSigner | null}) {
 
     const params = useParams();
     const propertyId = params.id || '';
@@ -51,7 +52,10 @@ export function Payment() {
             <div className="relative z-10 mt-16 p-6 w-full md:p-12 md:px-30 lg:py-12 lg:px-48 text-primary-text">
                 {(property && !loading) ?
                 <>
-                    <PaymentSection loading={loading} reservation={reservation} property={property}/>
+                    <PaymentSection 
+                    account={account}
+                    signer={signer}
+                    loading={loading} reservation={reservation} property={property}/>
                 </>
                 :
                 <></>

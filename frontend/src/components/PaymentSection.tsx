@@ -1,12 +1,18 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { MdArrowBackIos, MdAttachMoney } from "react-icons/md";
 import { PropertyType, ReservationType } from '../utils/types';
 import { MdLocationOn, MdDateRange, MdPerson } from 'react-icons/md';
 import { useState } from 'react';
 import { tokensData, chainsData } from '../utils/mock';
+import { ethers } from 'ethers';
+import { contractAddresses } from '@/utils/addresses';
+import { BlockEstateABI } from '@/contracts/BlockEstate';
+import { ProjectAccountABI } from '@/contracts/ProjectAccount';
+import { ERC20ABI } from '@/contracts/ERC20';
+import { RentalsABI } from '@/contracts/Rentals';
 
-export function PaymentSection({loading, reservation, property} : 
-    {loading: boolean, reservation: ReservationType | null, property: PropertyType | null}) {
+export function PaymentSection({loading, reservation, property, account, signer} : 
+    {loading: boolean, reservation: ReservationType | null, property: PropertyType | null, account: string, signer: ethers.providers.JsonRpcSigner | null}) {
 
     const navigator = useNavigate();
 
@@ -20,6 +26,8 @@ export function PaymentSection({loading, reservation, property} :
         setIsOpenToken(false);
     };
 
+    const { id } = useParams();
+
     const [isOpenChain, setIsOpenChain] = useState(false);
     const [selectedChainName, setSelectedChainName] = useState('Select a blockchain');
     const [selectedChain, setSelectedChain] = useState('');
@@ -30,14 +38,25 @@ export function PaymentSection({loading, reservation, property} :
         setIsOpenChain(false);
     };
 
-    const handlePayment = () => {
-        if (!selectedToken || !selectedChain) {
-            alert("Please select both token and chain.");
-            return;
-        }
+    const handlePayment = async () => {
         
-        alert(`Payment done with ${selectedToken} on ${selectedChain}`);
-        navigator('/');
+        const chainId = await signer?.getChainId() as number;
+             
+         
+        const blockEstateContract = new ethers.Contract(contractAddresses[chainId]["BlockEstate"], BlockEstateABI, signer as ethers.providers.JsonRpcSigner);
+        
+        const rentalCollection = await blockEstateContract.functions.projectsRentalsCollections(id);
+        
+        const rentalCollectionContract = new ethers.Contract(rentalCollection[0], RentalsABI, signer as ethers.providers.JsonRpcSigner);
+
+        const paymentTokenContract = new ethers.Contract(contractAddresses[chainId]["PaymentToken"], ERC20ABI, signer as ethers.providers.JsonRpcSigner);
+        
+        
+        const approveTx = await paymentTokenContract.functions.approve(rentalCollection[0], ethers.utils.parseEther(Number(800).toString()));
+        await approveTx.wait();
+        const paymentTx = await rentalCollectionContract.functions.rentProperty(account, 8, 10);
+        await paymentTx.wait();
+        
         // Here we will handle the payment
     };
 
@@ -86,7 +105,7 @@ export function PaymentSection({loading, reservation, property} :
 
                             {/* Blockchain */}
 
-                            <div className="flex items-center bg-[rgba(255,255,255,0.1)] border-[1px] border-white text-white p-3 rounded-full shadow-sm">
+                            {/* <div className="flex items-center bg-[rgba(255,255,255,0.1)] border-[1px] border-white text-white p-3 rounded-full shadow-sm">
                                 <div 
                                     className="relative inline-block w-full"
                                     onMouseLeave={() => setIsOpenChain(false)} 
@@ -132,11 +151,11 @@ export function PaymentSection({loading, reservation, property} :
                                         </ul>
                                     )}
                                 </div>
-                            </div>
+                            </div> */}
 
                             {/* Select Token */}
 
-                            <div className="flex items-center bg-[rgba(255,255,255,0.1)] border-[1px] border-white text-white p-3 rounded-full shadow-sm">
+                            {/* <div className="flex items-center bg-[rgba(255,255,255,0.1)] border-[1px] border-white text-white p-3 rounded-full shadow-sm">
                                 <div 
                                     className="relative inline-block w-full"
                                     onMouseLeave={() => setIsOpenToken(false)} 
@@ -182,7 +201,7 @@ export function PaymentSection({loading, reservation, property} :
                                         </ul>
                                     )}
                                 </div>
-                            </div>
+                            </div> */}
 
 
 

@@ -2,8 +2,8 @@
 
 export const contractAddresses = {
     51: { //XDC
-        "BlockEstate": "0x69801C169647Ad125707Dd40096D4EDC20Bb521a",
-        "PaymentToken": "0x536527976E98E253B424a3655E695D144E343341"
+        "BlockEstate": "0x08845C33822e772bC534A3E0EF55e5f9782A0c43",
+        "PaymentToken": "0xaD4642839321c98754ddcB2aAa1ba073E57E952F"
     }, 
     84532: { //BASE
         "BlockEstate": "0xBd6ed8BAF6904a97c3125f1b6920f268fF39Aaa2",

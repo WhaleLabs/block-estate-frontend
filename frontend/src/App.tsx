@@ -97,10 +97,14 @@ function App() {
             </Route>
             <Route path="/property/:id" element={
               <Property
+                account={account}
+                signer={signer}
               />
             }/>
             <Route path="/checkout/:id" element={
               <Payment
+                account={account}
+                signer={signer}
               />
             }/>
             <Route path="/projects" element={
@@ -131,6 +135,8 @@ function App() {
           }/>
           <Route path="/checkout/:id" element={
             <Payment
+              account={account}
+              signer={signer}
             />
           }/>
           <Route path="/projects" element={
