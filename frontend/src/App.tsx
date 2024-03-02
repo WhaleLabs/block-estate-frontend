@@ -16,56 +16,70 @@ import Projects from "./pages/Projects"
 import Project from "./pages/Project"
 import { Funding } from "./pages/Funding"
 
+import { MetaMaskUIProvider, useSDK } from "@metamask/sdk-react-ui";
+
 function App() {
 
   const [filteredLocation, setFilteredLocation] = useState(locationData);
 
+  const {ready} = useSDK();
+  console.log("ready", ready);
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={
-          <Layout
-            filteredLocation={filteredLocation}
-            setFilteredLocation={setFilteredLocation}
-          />
-        }>
+    <MetaMaskUIProvider
+    sdkOptions={{
+        dappMetadata: {
+          name: "BlockEstate",
+          url: window.location.href,
+        }
+    }}
+    >
+      <BrowserRouter>
+        <Routes>
           <Route path="/" element={
-            <Home 
+            <Layout
               filteredLocation={filteredLocation}
+              setFilteredLocation={setFilteredLocation}
             />
-          } />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/trips" element={<Trips />} />
-          <Route path="/holdings" element={<Holdings />} />
-          <Route path="/my-holding/:id/" element={<MyHolding />} >
-            <Route path="/my-holding/:id/info" element={<HoldingInfo />} />
-            <Route path="/my-holding/:id/proposal" element={<Proposal />} />
-            <Route path="/my-holding/:id/create-proposal" element={<CreateProposal />} />
+          }>
+            <Route path="/" element={
+              <Home 
+                filteredLocation={filteredLocation}
+              />
+            } />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/trips" element={<Trips />} />
+            <Route path="/holdings" element={<Holdings />} />
+            <Route path="/my-holding/:id/" element={<MyHolding />} >
+              <Route path="/my-holding/:id/info" element={<HoldingInfo />} />
+              <Route path="/my-holding/:id/proposal" element={<Proposal />} />
+              <Route path="/my-holding/:id/create-proposal" element={<CreateProposal />} />
+            </Route>
+            <Route path="/property/:id" element={
+              <Property
+              />
+            }/>
+            <Route path="/checkout/:id" element={
+              <Payment
+              />
+            }/>
+            <Route path="/projects" element={
+              <Projects
+                filteredLocation={filteredLocation}
+              />
+            } />
+            <Route path="/projects/:id" element={
+              <Project
+              />
+            } />
+            <Route path="/funding/:id" element={
+              <Funding
+              />
+            } />
           </Route>
-          <Route path="/property/:id" element={
-            <Property
-            />
-          }/>
-          <Route path="/checkout/:id" element={
-            <Payment
-            />
-          }/>
-          <Route path="/projects" element={
-            <Projects
-              filteredLocation={filteredLocation}
-            />
-          } />
-          <Route path="/projects/:id" element={
-            <Project
-            />
-          } />
-          <Route path="/funding/:id" element={
-            <Funding
-            />
-          } />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
+    </MetaMaskUIProvider>
   )
 }
 
