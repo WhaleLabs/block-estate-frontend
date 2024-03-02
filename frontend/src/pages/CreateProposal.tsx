@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { holdingData } from '../utils/mock';
+import { fundingData } from '../utils/mock';
 import { HoldingType } from '../utils/types';
 
 export default function CreateProposal() {
@@ -21,8 +21,8 @@ export default function CreateProposal() {
 
     async function fetchHolding() {
         try {
-            // fetch the holdingData by the id here and then set using setHolding
-            const holding = holdingData.find(holding => holding.id === parseInt(holdingId));
+            // fetch the fundingData by the id here and then set using setHolding
+            const holding = fundingData.find(holding => holding.id === parseInt(holdingId));
             setHolding(holding || null);
         } catch (error) {
             console.error("There was an error fetching the data:", error);

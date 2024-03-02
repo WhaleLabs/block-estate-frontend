@@ -407,20 +407,24 @@ export const tripData = [
     },
 ];
 
-export const holdingData = [
+export const fundingData = [
     {
         id: 1,
         title: 'Holding 1',
-        image: imovel1,
+        // image: imovel1,
         location: 'New York City, NY, USA',
         price: 1000000,
-        startDate: '2024-03-01',
-        endDate: '2024-03-05',
-        status: 'Available',
-        rating: 4.5,
-        tokens: 100,
-        numNFTs: 5,
-        holders: ['John Doe', 'Alice Smith', 'Emily Johnson'],
+        status: 'Available', //Available, Reserved, Funded
+        // startDate: '2024-03-01',
+        // endDate: '2024-03-05',
+        // rating: 4.5,
+        // tokens: 100,
+        // numNFTs: 5,
+        holders: [
+            { name: 'John Doe', tokens: 50, nfts: 3 },
+            { name: 'Alice Smith', tokens: 30, nfts: 2 },
+            { name: 'Emily Johnson', tokens: 20, nfts: 0 }
+        ],
         totalTokens: 500,
         pictures: [
             pic2_1,
@@ -434,50 +438,48 @@ export const holdingData = [
     {
         id: 2,
         title: 'Holding 2',
-        image: imovel1,
         location: 'Los Angeles, CA, USA',
         price: 1200000,
-        startDate: '2024-04-10',
-        endDate: '2024-04-15',
-        status: 'Rented',
-        rating: 4.8,
-        tokens: 120,
-        numNFTs: 3,
-        holders: ['John Doe', 'Alice Smith', 'Emily Johnson'],
-        totalTokens: 500,
+        status: 'Funded',
+        holders: [
+            { name: 'Michael Johnson', tokens: 60, nfts: 4 },
+            { name: 'Sophia Brown', tokens: 40, nfts: 2 },
+            { name: 'William Davis', tokens: 20, nfts: 1 }
+        ],
+        totalTokens: 600,
         pictures: [
-            pic2_1,
-            pic2_2,
-            pic2_3,
-            pic2_4,
-            pic2_5,
-            pic2_6,
+            pic3_1,
+            pic3_2,
+            pic3_3,
+            pic3_4,
+            pic3_5,
+            pic3_6,
         ]
     },
     {
         id: 3,
         title: 'Holding 3',
-        image: imovel1,
         location: 'Chicago, IL, USA',
         price: 900000,
-        startDate: '2024-05-20',
-        endDate: '2024-05-25',
-        status: 'Available',
-        rating: 4.2,
-        tokens: 80,
-        numNFTs: 7,
-        holders: ['John Doe', 'Alice Smith', 'Emily Johnson'],
-        totalTokens: 500,
+        status: 'Funded',
+        holders: [
+            { name: 'Emma Wilson', tokens: 40, nfts: 2 },
+            { name: 'James Miller', tokens: 30, nfts: 1 },
+            { name: 'Olivia Taylor', tokens: 10, nfts: 0 }
+        ],
+        totalTokens: 400,
         pictures: [
-            pic2_1,
-            pic2_2,
-            pic2_3,
-            pic2_4,
-            pic2_5,
-            pic2_6,
+            pic4_1,
+            pic4_2,
+            pic4_3,
+            pic4_4,
+            pic4_5,
+            pic4_6,
         ]
-    },
+    }
+    
 ];
+
 
 export const proposalData = [
     {

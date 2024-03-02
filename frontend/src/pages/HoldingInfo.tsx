@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from 'react';
-import { holdingData } from '../utils/mock';
+import { fundingData } from '../utils/mock';
 import { HoldingType } from '../utils/types';
 import { PhotoSection } from "../components/PhotoSection";
 
@@ -14,8 +14,8 @@ export default function HoldingInfo() {
 
     async function fetchHolding() {
         try {
-            // fetch the holdingData by the id here and then set using setHolding
-            const holding = holdingData.find(holding => holding.id === parseInt(holdingId));
+            // fetch the fundingData by the id here and then set using setHolding
+            const holding = fundingData.find(holding => holding.id === parseInt(holdingId));
             setHolding(holding || null);
         } catch (error) {
             console.error("There was an error fetching the data:", error);
@@ -36,20 +36,23 @@ export default function HoldingInfo() {
                     <div className="text-lg mb-4">
                         <p><strong className="text-gray-600">Location:</strong> {holding.location}</p>
                         <p><strong className="text-gray-600">Price:</strong> ${holding.price.toLocaleString()}</p>
-                        <p><strong className="text-gray-600">Rating:</strong> {holding.rating}</p>
+                        {/* <p><strong className="text-gray-600">Rating:</strong> {holding.rating}</p> */}
                     </div>
 
                     {/* Section for Holders and Total Tokens */}
                     <div className="mt-6">
                         <h2 className="text-lg font-semibold mb-2">Holders</h2>
-                        <ul>
-                            {holding.holders.map((holder, index) => (
-                                <li key={index}>
-                                    {/* {holder.name} - {holder.tokens} tokens */}
-                                    {holder}
-                                </li>
+                        <div className="divide-y divide-gray-200">
+                            {holding.holders.map((individualHolder: any, index: any) => (
+                                <div key={index} className="py-4 flex items-center justify-between">
+                                    <div>
+                                        <p className="text-lg font-semibold">{individualHolder.name}</p>
+                                        <p className="text-sm text-gray-500">Tokens: {individualHolder.tokens}</p>
+                                    </div>
+                                    {/* You can add additional elements/icons here if needed */}
+                                </div>
                             ))}
-                        </ul>
+                        </div>
                         <p className="mt-2">Total Tokens: {holding.totalTokens}</p>
                     </div>
                 </div>
