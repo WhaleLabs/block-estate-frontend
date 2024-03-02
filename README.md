@@ -60,15 +60,15 @@ The use of ERC 404 can support the solution in this way:
 
 - *Technical Architecture:*
 
-![Project Photo](./src/assets/Architecture.png)
+![Project Photo](frontend/src/assets/BusinessFlow.png)
 
 - *Business Flow:*
 
-![Project Photo](./src/assets/BusinessFlow.png)
+![Project Photo](frontend/src/assets/BusinessFlow.png)
 
 - *Project Logo:* 
 
-![Project Photo](./src/assets/logo.png)
+![Project Photo](frontend/src/assets/logo.png)
 
 _
 
