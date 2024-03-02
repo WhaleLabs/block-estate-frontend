@@ -102,6 +102,8 @@ function App() {
             }/>
             <Route path="/projects" element={
               <Projects
+                account={account}
+                signer={signer}
                 filteredLocation={filteredLocation}
               />
             } />

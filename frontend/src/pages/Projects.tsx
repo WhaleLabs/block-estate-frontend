@@ -1,16 +1,38 @@
 // import { useNavigate } from "react-router-dom";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { fundingData } from '../utils/mock';
 import { LocationType } from '../utils/types';
 import { FundingCard } from '@/components/FundingCard';
+import { ethers } from 'ethers';
+import { BlockEstateABI } from '@/contracts/BlockEstate';
+import { contractAddresses } from '@/utils/addresses';
 
-export default function Projects({filteredLocation} : {filteredLocation: LocationType[]}) {
+
+export default function Projects({filteredLocation, account, signer} : 
+    {filteredLocation: LocationType[], account: string, signer: ethers.providers.JsonRpcSigner}) {
+
+    const getFundgingData = async () => {
+        try{
+            console.log("account", account);
+            const chainId = await signer.getChainId();
+            const BlockEstateContract = new ethers.Contract(contractAddresses[chainId]["BlockEstate"], BlockEstateABI, signer);
+            const numberOfProjectsBigNumber = await BlockEstateContract.functions.projectsCounter();
+            const numberOfProjects = Number(ethers.utils.formatUnits(numberOfProjectsBigNumber[0]._hex, 0));
+            await Promise.all
+
+
+        } catch(err){
+            console.log(err);
+        }
+    }
+
+    useEffect(() => {
+        getFundgingData();
+    })
 
     // const navigator = useNavigate();
 
     const [loading, setLoading] = useState<boolean>(false);
-
-    console.log(filteredLocation);
 
     return (
         <div className='w-[100vw] h-[100vh]'>
