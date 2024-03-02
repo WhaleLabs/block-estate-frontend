@@ -10,7 +10,8 @@ import { MapSection } from "../components/MapSection";
 import { FundSection } from "@/components/FundSection";
 import HoldersList from "@/components/HoldersList";
 import FundraiserSection from "@/components/FundraiserSection";
-import { DescriptionProject } from "@/components/DescriptionProject";
+// import { DescriptionProject } from "@/components/DescriptionProject";
+import { DescriptionSection } from "@/components/DescriptionSection";
 import { ethers } from "ethers";
 import { contractAddresses } from "@/utils/addresses";
 import { BlockEstateABI } from "@/contracts/BlockEstate";
@@ -109,7 +110,8 @@ export default function Project({signer} : {signer: ethers.providers.JsonRpcSign
                             totalTokens={property.totalTokens} status={property.status} 
                             holders={property.holders} loading={loading} walletAddress={property.account as string} 
                             invested={property.invested as number} chainId={property.chainId as number}/>
-                        <DescriptionProject loading={loading}/>
+                        
+                        <DescriptionSection description={property.description} loading={loading}/>
                     </div>
                     {/* separation bar */}
                     <div className="hidden md:block w-[1px] bg-gray-300 h-[80%]"></div>
@@ -122,7 +124,7 @@ export default function Project({signer} : {signer: ethers.providers.JsonRpcSign
 
                 {/* Map Section where the API will fetch the property location and show it on the map */}
 
-                <MapSection loading={loading}/>
+                {/* <MapSection loading={loading}/> */}
 
                 {/* Test Section only to see if the property is being fetched correctly */}
 

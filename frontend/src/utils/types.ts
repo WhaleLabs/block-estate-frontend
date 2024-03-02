@@ -3,6 +3,7 @@ import { DateRange } from "react-day-picker"
 export type PropertyType = {
     id: number;
     title: string;
+    description: string;
     image: string;
     location: string;
     price: number;
@@ -22,6 +23,7 @@ export type HoldingType = {
     location: string;
     price: number;
     raised: number;
+    description: string;
     // startDate: string;
     // endDate: string;
     status: string;

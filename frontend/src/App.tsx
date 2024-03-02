@@ -125,6 +125,8 @@ function App() {
           <Route path="/create-project" element={<CreateProject />} />
           <Route path="/property/:id" element={
             <Property
+              account={account}
+              signer={signer}
             />
           }/>
           <Route path="/checkout/:id" element={
