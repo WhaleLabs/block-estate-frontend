@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { PropertyType, ReservationType } from '../utils/types';
 import { cardData, reservationData } from '../utils/mock';
-import { PaymentSection } from '../components/PaymentSection';
+import { FundingSection } from '@/components/FundingSection';
 
 export function Funding() {
 
@@ -51,7 +51,7 @@ export function Funding() {
             <div className="relative z-10 mt-16 p-6 w-full md:p-12 md:px-30 lg:py-12 lg:px-48 text-primary-text">
                 {(property && !loading) ?
                 <>
-                    <PaymentSection loading={loading} reservation={reservation} property={property}/>
+                    <FundingSection loading={loading} reservation={reservation} property={property}/>
                 </>
                 :
                 <></>

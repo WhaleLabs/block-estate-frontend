@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { fundingData } from '../utils/mock';
 import { HoldingType } from '../utils/types';
 import { PhotoSection } from "../components/PhotoSection";
+import HoldersList from "../components/HoldersList";
+import { HoldingHolderType } from '../utils/types';
 
 export default function HoldingInfo() {
 
@@ -42,17 +44,7 @@ export default function HoldingInfo() {
                     {/* Section for Holders and Total Tokens */}
                     <div className="mt-6">
                         <h2 className="text-lg font-semibold mb-2">Holders</h2>
-                        <div className="divide-y divide-gray-200">
-                            {holding.holders.map((individualHolder: any, index: any) => (
-                                <div key={index} className="py-4 flex items-center justify-between">
-                                    <div>
-                                        <p className="text-lg font-semibold">{individualHolder.name}</p>
-                                        <p className="text-sm text-gray-500">Tokens: {individualHolder.tokens}</p>
-                                    </div>
-                                    {/* You can add additional elements/icons here if needed */}
-                                </div>
-                            ))}
-                        </div>
+                        <HoldersList holders={holding.holders as HoldingHolderType[]} />
                         <p className="mt-2">Total Tokens: {holding.totalTokens}</p>
                     </div>
                 </div>
