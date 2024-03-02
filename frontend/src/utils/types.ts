@@ -18,16 +18,16 @@ export type LocationType = {
 export type HoldingType = {
     id: number;
     title: string;
-    image: string;
+    // image: string;
     location: string;
     price: number;
-    startDate: string;
-    endDate: string;
+    // startDate: string;
+    // endDate: string;
     status: string;
-    rating: number;
-    tokens: number;
-    numNFTs: number;
-    holders: string[]; // have to Change to an array of objects
+    // rating: number;
+    // tokens: number;
+    // numNFTs: number;
+    holders: object[];
     totalTokens: number;
     pictures: string[];
 };
