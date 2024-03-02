@@ -12,6 +12,7 @@ const HoldersList: React.FC<HoldersListProps> = ({ holders }) => {
                 <div key={index} className="py-4 flex items-center justify-between">
                     <div>
                         <p className="text-lg font-semibold">{individualHolder.name}</p>
+                        <p className="text-sm text-gray-500">Raised: {individualHolder.raised}</p>
                         <p className="text-sm text-gray-500">Tokens: {individualHolder.tokens}</p>
                     </div>
                     {/* You can add additional elements/icons here if needed */}

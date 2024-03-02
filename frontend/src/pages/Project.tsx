@@ -1,11 +1,15 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from 'react';
-import { cardData, reservationData } from '../utils/mock';
-import { PropertyType, ReservationType } from '../utils/types';
+// import { cardData, reservationData } from '../utils/mock';
+// import { PropertyType, ReservationType } from '../utils/types';
+import { fundingData } from "@/utils/mock";
+import { HoldingType } from "@/utils/types";
 import { MdFavorite, MdShare } from 'react-icons/md';
 import { PhotoSection } from "../components/PhotoSection";
 import { MapSection } from "../components/MapSection";
 import { FundSection } from "@/components/FundSection";
+import HoldersList from "@/components/HoldersList";
+import FundraiserSection from "@/components/FundraiserSection";
 import { DescriptionProject } from "@/components/DescriptionProject";
 
 export default function Project() {
@@ -13,17 +17,20 @@ export default function Project() {
     const params = useParams();
     const propertyId = params.id || '';
 
-    const [property, setProperty] = useState<PropertyType | null>(null);
-    const [reservation, setReservation] = useState<ReservationType | null>(null);
+    // const [property, setProperty] = useState<PropertyType | null>(null);
+    // const [reservation, setReservation] = useState<ReservationType | null>(null);
+    const [property, setProperty] = useState<HoldingType | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
 
     async function fetchProperty() {
         try {
             // fetch the cardData by the id here and then set using setProperty
-            const property = cardData.find(property => property.id === parseInt(propertyId));
-            const reservation = reservationData.find(reservation => reservation.id === parseInt(propertyId));
-            setProperty(property || null); 
-            setReservation(reservation?.reserveData ?? null);
+            // const property = cardData.find(property => property.id === parseInt(propertyId));
+            // const reservation = reservationData.find(reservation => reservation.id === parseInt(propertyId));
+            // setProperty(property || null); 
+            // setReservation(reservation?.reserveData ?? null);
+            const property = fundingData.find(property => property.id === parseInt(propertyId));
+            setProperty(property || null);
         } catch (error) {
             console.error("There was an error fetching the data:", error);
         } finally {
@@ -69,11 +76,16 @@ export default function Project() {
                 {/* Region with Description and Reserve Section */}
 
                 <div className="flex flex-col justify-between pt-6 md:flex-row md:space-x-6">
-                    <div className="">
+                    <div className="w-[80%]">
+                        <FundraiserSection id={propertyId} price={property.price} raised={property.raised} totalTokens={property.totalTokens} status={property.status} holders={property.holders} loading={loading} />
                         <DescriptionProject loading={loading}/>
                     </div>
-                    <div className="">
-                        <FundSection id={propertyId} reservation={reservation} loading={loading}/>
+                    {/* separation bar */}
+                    <div className="hidden md:block w-[1px] bg-gray-300 h-[80%]"></div>
+                    <div className="w-[20%]">
+                        <h2 className="text-xl font-semibold">Holders:</h2>
+                        <HoldersList holders={property.holders as any}/>
+                        {/* <FundSection id={propertyId} reservation={reservation} loading={loading}/> */}
                     </div>
                 </div>
 
@@ -83,14 +95,14 @@ export default function Project() {
 
                 {/* Test Section only to see if the property is being fetched correctly */}
 
-                <div className="bg-red-100 py-6 mt-12 flex flex-col items-center">
+                {/* <div className="bg-red-100 py-6 mt-12 flex flex-col items-center">
                     <h1 className="font-bold mb-6">TEST SECTION</h1>
                     <h1>{property.title}</h1>
                     <img className="h-48 w-auto" src={property.image} alt=""/>
                     <p>{property.location}</p>
                     <p>{property.price}</p>
                     <p>{property.rating}</p>
-                </div>
+                </div> */}
             </div>            
             :
             <></>}
